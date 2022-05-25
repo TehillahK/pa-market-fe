@@ -5,33 +5,33 @@ import NavBar from "../../components/Navbar";
 
 import FarmCard from "../../components/FarmCard";
 import { Row, Col, Container } from "react-bootstrap";
-export default function Farms() {
-  const [farms, setFarms] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://127.0.0.1:5000/api/farms")
-      .then(function (response) {
-        // handle success
-        setFarms(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-        console.log(farms);
-      });
-  }, []);
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`http://127.0.0.1:5000/api/farms`)
+  const farms = await res.json()
+
+  // Pass data to the page via props
+  return { props: { farms } }
+}
+
+
+export default function Farms({farms}) {
 
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Farms</title>
         <meta name="description" content="Farm" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
+      <Container>
+        <Row>
+          <Col>
+          </Col>
+        </Row>
+      </Container>
       <Container>
         <h2>Farms near you</h2>
         <Row xs={1} md={3} className="g-3">
