@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
     name: "user",
     initialState: {
-      firstName:"",
-      lastName:"",
-      email:"",
+      firstName:"Tehillah",
+      lastName:"Kangamba",
+      email:"tehillahkangamba@gmail.com",
       phoneNumber:"",
-      address:""
+      address:"63rd 10 street"
     },
     reducers: {
       increment: (state) => {
@@ -18,12 +18,15 @@ export const userSlice = createSlice({
       },
       incrementByAmount: (state, action) => {
         state.count += action.payload;
+      },
+      changeAddress:(state,action)=>{
+        state.address = action.payload
       }
     }
   });
   
   // Action creators are generated for each case reducer function
-  export const { increment, decrement, incrementByAmount } = userSlice.actions;
+  export const { increment, decrement, incrementByAmount,changeAddress } = userSlice.actions;
   
   export default userSlice.reducer;
   

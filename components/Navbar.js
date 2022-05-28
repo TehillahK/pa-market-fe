@@ -8,8 +8,11 @@ import {
   Form,
   FormControl,
   Container,
+  Row,
+  SplitButton
 } from "react-bootstrap";
-export default function NavBar() {
+export default function NavBar(props) {
+  const userAddress = props.address;
   return (
     <Navbar expand="lg">
       <Container fluid>
@@ -21,17 +24,15 @@ export default function NavBar() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Address
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <SplitButton title={`Deliver to ${userAddress}`}>
+              <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+              <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+              <Dropdown.Item eventKey="3" active>
+                Active Item
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+            </SplitButton>
             <Nav.Link href="#" disabled>
               Link
             </Nav.Link>

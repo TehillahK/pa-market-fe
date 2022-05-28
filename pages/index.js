@@ -2,8 +2,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import NavBar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
-
+import { useDispatch, useSelector } from "react-redux";
+import { changeAddress } from "./redux/user";
 export default function Home() {
+  const {address}= useSelector((state)=>state.user)
+  console.log(address)
   return (
     <div className={styles.container}>
       <Head>
@@ -11,7 +14,7 @@ export default function Home() {
         <meta name="description" content="Pa Market is a hub for " />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar />
+      <NavBar address={address} />
       <main className={styles.main}>
        
       </main>

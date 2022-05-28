@@ -5,7 +5,8 @@ import NavBar from "../../components/Navbar";
 
 import FarmCard from "../../components/FarmCard";
 import { Row, Col, Container } from "react-bootstrap";
-
+import { useDispatch, useSelector } from "react-redux";
+import { changeAddress } from "./redux/user";
 export async function getServerSideProps() {
   // Fetch data from external API
   const res = await fetch(`http://127.0.0.1:5000/api/farms`)
@@ -17,7 +18,8 @@ export async function getServerSideProps() {
 
 
 export default function Farms({farms}) {
-
+  const {address}= useSelector((state)=>state.address)
+  console.log(address)
   return (
     <div>
       <Head>
