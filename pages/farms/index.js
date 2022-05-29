@@ -6,20 +6,26 @@ import NavBar from "../../components/Navbar";
 import FarmCard from "../../components/FarmCard";
 import { Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { changeAddress } from "./redux/user";
+import { changeAddress } from "../redux/user";
+import { addFarms } from "../redux/farms";
+// Getting data from api ,dont forget to run the python api
 export async function getServerSideProps() {
   // Fetch data from external API
-  const res = await fetch(`http://127.0.0.1:5000/api/farms`)
-  const farms = await res.json()
+  const res = await fetch(`http://127.0.0.1:5000/api/farms`);
+  const farms = await res.json();
+
+  
 
   // Pass data to the page via props
-  return { props: { farms } }
+  return { props: { farms } };
 }
 
-
-export default function Farms({farms}) {
-  const {address}= useSelector((state)=>state.address)
-  console.log(address)
+export default function Farms({ farms }) {
+  // Getting stuff from redux
+ 
+  const { address } = useSelector((state) => state.user);
+  useDispatch(addFarms(farms))
+  console.log(address);
   return (
     <div>
       <Head>
@@ -30,8 +36,7 @@ export default function Farms({farms}) {
       <NavBar />
       <Container>
         <Row>
-          <Col>
-          </Col>
+          <Col></Col>
         </Row>
       </Container>
       <Container>
@@ -39,7 +44,7 @@ export default function Farms({farms}) {
         <Row xs={1} md={3} className="g-3">
           {farms.map((farm) => {
             return (
-              <Col   md={4}>
+              <Col md={4}>
                 <FarmCard key={farm._id} farm={farm} />;
               </Col>
             );
