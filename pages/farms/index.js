@@ -24,7 +24,8 @@ export default function Farms({ farms }) {
   // Getting stuff from redux
  
   const { address } = useSelector((state) => state.user);
-  useDispatch(addFarms(farms))
+  const dispatch = useDispatch()
+  dispatch(addFarms(farms))
   console.log(address);
   return (
     <div>

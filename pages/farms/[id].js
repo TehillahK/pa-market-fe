@@ -25,21 +25,28 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const res = await fetch(`http://127.0.0.1:5000/api/farm?id=${id}`);
-  const data = await res.json();
+  //const res = await fetch(`http://127.0.0.1:5000/api/farm?id=${id}`);
+  //const data = await res.json();
   const resCrops = await fetch(`http://127.0.0.1:5000/api/crops?id=${id}`);
   const dataCrops = await resCrops.json();
   return {
-    props: { farm: data, crops: dataCrops },
+    props: {  crops: dataCrops },
   };
 };
 
-export default function Farms({ farm, crops }) {
+export default function Farms({ crops }) {
   // Getting stuff from redux
   const { address } = useSelector((state) => state.user);
   const router = useRouter();
   const { id } = router.query;
-  const farmName = farm.name;
+  const {farms} = useSelector((state)=> state.farms)
+  const farm = farms.filter(
+    (farm)=>{
+      return farm._id == id
+    }
+  )
+  console.log(farm)
+  const farmName = farm[0].name;
   const farmCrops = crops.produce;
   return (
     <div>

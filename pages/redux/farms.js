@@ -8,7 +8,7 @@ export const farmsSlice = createSlice({
     reducers: {
    
       addFarms:(state,action)=>{
-        state.farms.push(...action.payload)
+        state.farms= action.payload
       }
     }
   });
