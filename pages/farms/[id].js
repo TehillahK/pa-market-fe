@@ -2,7 +2,7 @@ import Head from "next/head";
 import NavBar from "../../components/Navbar";
 
 import FarmCard from "../../components/FarmCard";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container,Image  } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { changeAddress } from "../redux/user";
 import { addFarms } from "../redux/farms";
@@ -57,9 +57,15 @@ export default function Farms({ crops }) {
       </Head>
       <NavBar />
       <Container>
-        <h1>{farmName}</h1>
+
         <Container>
-         
+          <Row>
+            <Image src={"https://images.pexels.com/photos/235725/pexels-photo-235725.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
+                   className={"farm-cover-img"}
+              rounded={true}
+            />
+            <h1>{farmName}</h1>
+          </Row>
           <Row xs={1} md={1} className="g-3">
             {
               farmCrops.map(
@@ -70,7 +76,7 @@ export default function Farms({ crops }) {
                           crop.name
                         }
                     </div>
-                    
+
                   )
                 }
               )

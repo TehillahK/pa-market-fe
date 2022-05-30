@@ -2,3 +2,9 @@
     width:20rem;
     height: 10rem;
 }
+
+.farm-cover-img{
+    height:20rem;
+    width: 50rem;
+    object-fit: cover;
+}
