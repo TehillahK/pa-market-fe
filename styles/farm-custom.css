@@ -5,6 +5,25 @@
 
 .farm-cover-img{
     height:20rem;
-    width: 50rem;
+    width: 100%;
     object-fit: cover;
 }
+
+.farm-title{
+    margin-left: 1rem;
+    padding-top: 1rem;
+
+}
+.farm-description{
+    margin-left: 1.5rem;
+    padding-top: 0.2rem;
+}
+.farm-meta {
+    list-style: none;
+}
+.farm-meta li{
+    margin-right: 1rem;
+}
+
+
+
