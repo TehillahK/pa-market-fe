@@ -1,6 +1,6 @@
 import {Container ,Image,Modal,Button} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faCircleInfo,faStar ,faTruck} from '@fortawesome/free-solid-svg-icons'
 import {useState} from "react";
 
 function MyVerticallyCenteredModal(props) {
@@ -50,16 +50,15 @@ const FarmHeader =(props)=>{
                     className={"farm-info"}
                     style={{fontSize:"1rem",marginLeft:"1rem"}}
                     onClick={() => setModalShow(true)}
-                >
-                    more info <FontAwesomeIcon icon={faCircleInfo} />
+                >more info <FontAwesomeIcon icon={faCircleInfo} />
                 </a>
             </div>
             <div className={"farm-description d-inline-flex"}>
 
                 <ul className={"d-inline-flex farm-meta"}>
                     <li>Address</li>
-                    <li>K10 Delivery Fee</li>
-                    <li>4.5 Rating</li>
+                    <li><FontAwesomeIcon icon={faTruck} />  K10 Delivery Fee </li>
+                    <li><FontAwesomeIcon icon={faStar} />  4.5 </li>
                 </ul>
 
             </div>

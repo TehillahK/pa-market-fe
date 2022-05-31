@@ -10,6 +10,8 @@ import { addFarms } from "../redux/farms";
 import { useRouter } from "next/router";
 import ShoppingCart from "../../components/ShoppingCart";
 import FarmHeader from "../../components/FarmHeader";
+import FarmCropNav from "../../components/FarmCropNav";
+import CropCard from "../../components/CropCard";
 
 export const getStaticPaths = async () => {
   const res = await fetch(`http://127.0.0.1:5000/api/farms`);
@@ -55,22 +57,30 @@ export default function Farms({ farm, crops }) {
         </Head>
         <NavBar />
         <FarmHeader name ={farmName} />
-        <Container>
-          <Container>
-            <Row>
-              <Col  xs={7}>
 
-                <Row >
+        <Container>
+          <Row>
+            <Col xs={1}>
+              <FarmCropNav />
+            </Col>
+            <Col>
+              <Container>
+                <Row>
+                  <Col  xs={7}>
+
+                    <Row >
                   {farmCrops.map((crop) => {
-                    return <div key={crop.name}>{crop.name}</div>;
+                    return <CropCard key={crop.name} crop={crop} />;
                   })}
+                    </Row>
+                  </Col>
+                  <Col  xs lg="4">
+                  <ShoppingCart />
+                  </Col>
                 </Row>
+              </Container>
               </Col>
-              <Col  xs lg="4">
-                <ShoppingCart />
-              </Col>
-            </Row>
-          </Container>
+          </Row>
         </Container>
       </div>
   );

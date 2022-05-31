@@ -25,5 +25,19 @@
     margin-right: 1rem;
 }
 
+.crop-card{
+    display: flex;
+    justify-content: space-between;
+    width: 33rem;
+    margin-bottom: 2rem;
+    border: 1px solid black;
+}
+
+.crop-card-img{
+    object-fit: cover;
+    height: 10rem;
+    width: 5rem;
+}
+
 
 
