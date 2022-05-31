@@ -3,17 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 export const shoppingCartSlice = createSlice({
     name: "cart",
     initialState: {
-        products:[]
+        cart:[],
+        totalCost:0
     },
     reducers: {
 
-        addProducts:(state,action)=>{
-            state.products= action.payload
+        addCartItem:(state,action)=>{
+            state.cart.push(action.payload);
+            state.totalCost = state.totalCost + action.payload.cost;
         }
     }
 });
 
 // Action creators are generated for each case reducer function
-export const { addProducts} = shoppingCartSlice.actions;
+export const { addCartItem} = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;

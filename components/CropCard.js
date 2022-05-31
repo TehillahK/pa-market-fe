@@ -1,11 +1,15 @@
 import Link from "next/link";
 import {Button, Card, Image, Modal} from "react-bootstrap";
 import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {addCartItem} from "../pages/redux/shoppingcart";
 
 function CropSelector(props) {
     const [amount,setAmount]= useState(1);
     const [cost ,setCost] = useState(2)
+    const dispatch = useDispatch()
     const crop = props.crop;
+
     const increase = ()=>{
         let currAmount = amount
         setAmount(++currAmount)
@@ -14,10 +18,12 @@ function CropSelector(props) {
     const decrease =()=>{
         let currAmount = amount
         if (currAmount>1){
-            setAmount(--currAmount)
-            setCost(2*currAmount)
+            setAmount(--currAmount);
+            setCost(2*currAmount);
         }
-
+    }
+    const createCartItem =(quantity,quantityType , cost ,name)=>{
+        return{"name":name,"quantity":quantity,"quantityType":quantityType,"cost":cost}
     }
     return (
         <Modal
@@ -47,7 +53,14 @@ function CropSelector(props) {
                     }}>+</button>
                 </div>
                 <div className="d-grid">
-                    <Button variant="primary" size="lg">
+                    <Button variant="primary" size="lg"
+                        onClick={
+                            ()=>{
+                                const cartItem = createCartItem(amount,"kg",cost,crop.name)
+                                dispatch(addCartItem(cartItem))
+                            }
+                        }
+                    >
                         K{cost} Add to Cart
                     </Button>
                 </div>
