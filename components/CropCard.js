@@ -4,15 +4,20 @@ import {useState} from "react";
 
 function CropSelector(props) {
     const [amount,setAmount]= useState(1);
+    const [cost ,setCost] = useState(2)
     const crop = props.crop;
     const increase = ()=>{
         let currAmount = amount
         setAmount(++currAmount)
+        setCost(2*currAmount)
     }
     const decrease =()=>{
         let currAmount = amount
-        if (currAmount>1)
+        if (currAmount>1){
             setAmount(--currAmount)
+            setCost(2*currAmount)
+        }
+
     }
     return (
         <Modal
@@ -43,7 +48,7 @@ function CropSelector(props) {
                 </div>
                 <div className="d-grid">
                     <Button variant="primary" size="lg">
-                        Add to Cart
+                        K{cost} Add to Cart
                     </Button>
                 </div>
 
