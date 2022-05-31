@@ -12,6 +12,7 @@ import ShoppingCart from "../../components/ShoppingCart";
 import FarmHeader from "../../components/FarmHeader";
 import FarmCropNav from "../../components/FarmCropNav";
 import CropCard from "../../components/CropCard";
+import {useState} from "react";
 
 export const getStaticPaths = async () => {
   const res = await fetch(`http://127.0.0.1:5000/api/farms`);
@@ -39,6 +40,7 @@ export const getStaticProps = async (context) => {
 };
 
 export default function Farms({ farm, crops }) {
+
   // Getting stuff from redux
   const { address } = useSelector((state) => state.user);
   const router = useRouter();

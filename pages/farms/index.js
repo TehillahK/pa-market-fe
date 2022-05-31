@@ -12,20 +12,21 @@ import { addFarms } from "../redux/farms";
 export async function getServerSideProps() {
   // Fetch data from external API
   const res = await fetch(`http://127.0.0.1:5000/api/farms`);
-  const farms = await res.json();
+  const ufarms = await res.json();
 
-  
+
 
   // Pass data to the page via props
-  return { props: { farms } };
+  return { props: { ufarms } };
 }
 
-export default function Farms({ farms }) {
+export default function Farms({ ufarms }) {
   // Getting stuff from redux
- 
+
   const { address } = useSelector((state) => state.user);
   const dispatch = useDispatch()
-  dispatch(addFarms(farms))
+  dispatch(addFarms(ufarms))
+    const { farms } = useSelector((state) => state.farms);
   console.log(address);
   return (
     <div>
