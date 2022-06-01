@@ -58,6 +58,7 @@ function CropSelector(props) {
                             ()=>{
                                 const cartItem = createCartItem(amount,"kg",cost,crop.name)
                                 dispatch(addCartItem(cartItem))
+                                props.onHide
                             }
                         }
                     >
@@ -84,7 +85,7 @@ const CropCard= (props) => {
     return (
         <>
         <a
-            href={"#"}
+
             className={"d-flex flex-row justify-content-between shadow mb-5 bg-body rounded"}
             style={{height:"10rem"}}
             onClick={

@@ -55,7 +55,10 @@ const ShoppingCart= (props) => {
                         );
                     })}
                 </ListGroup>
-                <p>Total Cost K{totalCost}</p>
+                {totalCost>0 &&<p>Total Cost K{totalCost}</p>
+
+                }
+
                 <div className="d-grid">
                     <Button variant="primary" size="lg">
                     Checkout
