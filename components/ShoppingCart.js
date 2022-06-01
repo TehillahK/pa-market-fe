@@ -5,7 +5,7 @@ import FarmCard from "./FarmCard";
 import {useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faCircleInfo,faStar ,faTruck,faTrash} from '@fortawesome/free-solid-svg-icons'
-import {removeCartItem} from "../pages/redux/shoppingcart";
+import {removeCartItem, setFarmID, setFarmName} from "../pages/redux/shoppingcart";
 
 function CartItems(props){
     const cart = props.cart;
@@ -65,7 +65,14 @@ const ShoppingCart= (props) => {
                 }
 
                 <div style={{marginTop:"1rem"}} className="d-grid">
-                    <Button variant="primary" size="lg">
+                    <Button variant="primary" size="lg"
+                        onClick={
+                            ()=>{
+                                dispatch(setFarmName(farm.name))
+                                dispatch(setFarmID(farm._id))
+                            }
+                        }
+                    >
                     Checkout
                     </Button>
                 </div>

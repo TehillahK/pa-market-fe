@@ -4,7 +4,9 @@ export const shoppingCartSlice = createSlice({
     name: "cart",
     initialState: {
         cart:[],
-        totalCost:0
+        totalCost:0,
+        farmName:"",
+        farmID:""
     },
     reducers: {
 
@@ -25,7 +27,13 @@ export const shoppingCartSlice = createSlice({
 
                 }
 
-            }
+            },
+        setFarmName:(state,action)=>{
+            state.farmName = action.payload;
+        },
+        setFarmID:(state,action)=>{
+            state.farmID = action.payload;
+        }
 
 
 
@@ -33,6 +41,6 @@ export const shoppingCartSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addCartItem, removeCartItem} = shoppingCartSlice.actions;
+export const { addCartItem, removeCartItem,setFarmName,setFarmID} = shoppingCartSlice.actions;
 
 export default shoppingCartSlice.reducer;
