@@ -16,14 +16,12 @@ export const shoppingCartSlice = createSlice({
         removeCartItem:(state,action)=>{
             for (let i = 0; i < state.cart.length ; i++) {
                     if (state.cart[i].id === action.payload){
-                       state.cart.slice(i,0)
+                       state.cart.splice(i,1)
 
                     }
 
                 }
-                if (state.cart === null){
-                    state.cart = []
-                }
+
             }
 
 
