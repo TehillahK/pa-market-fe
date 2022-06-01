@@ -23,7 +23,7 @@ function CropSelector(props) {
         }
     }
     const createCartItem =(quantity,quantityType , cost ,name)=>{
-        return{"name":name,"quantity":quantity,"quantityType":quantityType,"cost":cost}
+        return{id:Date.now(),"name":name,"quantity":quantity,"quantityType":quantityType,"cost":cost}
     }
     return (
         <Modal

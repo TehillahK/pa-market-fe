@@ -10,15 +10,15 @@ export const userSlice = createSlice({
       address:"63rd 10 street"
     },
     reducers: {
-   
+
       changeAddress:(state,action)=>{
         state.address = action.payload
       }
+
     }
   });
-  
+
   // Action creators are generated for each case reducer function
   export const { changeAddress } = userSlice.actions;
-  
+
   export default userSlice.reducer;
-  

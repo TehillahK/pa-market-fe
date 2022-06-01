@@ -1,8 +1,11 @@
 import Link from "next/link";
 import {Button, Card, Col, ListGroup} from "react-bootstrap";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import FarmCard from "./FarmCard";
 import {useState} from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faCircleInfo,faStar ,faTruck,faTrash} from '@fortawesome/free-solid-svg-icons'
+import {removeCartItem} from "../pages/redux/shoppingcart";
 
 function CartItems(props){
     const cart = props.cart;
@@ -21,7 +24,7 @@ function CartItems(props){
 
 const ShoppingCart= (props) => {
     const { cart,totalCost } = useSelector((state) => state.cart);
-
+    const dispatch = useDispatch()
     const farm = props.farm;
     return (
         <Card>
@@ -32,9 +35,22 @@ const ShoppingCart= (props) => {
                 <ListGroup>
                     {cart.map((item) => {
 
-                        return (
+                        return (cart&&
                             <ListGroup.Item key={item}>
-                                {`${item.name}  ${item.quantity}${item.quantityType} K${item.cost}`}
+                                <div className={"d-flex justify-content-between align-items-center"}>
+                                    <div>
+                                    {`${item.name}  ${item.quantity}${item.quantityType} K${item.cost}`}
+                                    </div>
+                                    <Button variant="link"
+                                            onClick={
+                                                ()=>{
+                                                   dispatch(removeCartItem(item.id))
+                                                }
+                                            }
+                                    >
+                                        <FontAwesomeIcon icon={faTrash} />
+                                    </Button>
+                                </div>
                             </ListGroup.Item>
                         );
                     })}
