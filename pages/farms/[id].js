@@ -60,7 +60,7 @@ export default function Farms({ farm, crops }) {
         <NavBar />
         <FarmHeader name ={farmName} />
 
-        <Container>
+        <Container fluid>
           <Row>
             <Col xs={1}>
               <FarmCropNav />
@@ -76,8 +76,8 @@ export default function Farms({ farm, crops }) {
                   })}
                     </Row>
                   </Col>
-                  <Col  xs lg="4">
-                  <ShoppingCart />
+                  <Col  xs lg="5">
+                    <ShoppingCart />
                   </Col>
                 </Row>
               </Container>

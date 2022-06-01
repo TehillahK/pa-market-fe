@@ -93,7 +93,7 @@ const CropCard= (props) => {
                 }
             }
         >
-            <div className={"d-flex flex-column justify-content-center  p-3 "} style={{width:"21rem"}}>
+            <div className={"d-flex flex-column justify-content-center  p-3 "} style={{width:"90%"}}>
                 <Card.Title>{crop.name}</Card.Title>
             </div>
             <Image
