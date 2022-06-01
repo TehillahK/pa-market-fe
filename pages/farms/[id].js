@@ -76,7 +76,7 @@ export default function Farms({ farm, crops }) {
                   })}
                     </Row>
                   </Col>
-                  <Col  xs lg="5">
+                  <Col className="position-sticky" xs lg="5">
                     <ShoppingCart />
                   </Col>
                 </Row>

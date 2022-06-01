@@ -96,6 +96,8 @@ const CropCard= (props) => {
         >
             <div className={"d-flex flex-column justify-content-center  p-3 "} style={{width:"90%"}}>
                 <Card.Title>{crop.name}</Card.Title>
+                <Card.Text>Description of kind of crop</Card.Text>
+                <Card.Text>Price per kg</Card.Text>
             </div>
             <Image
                 className={"justify-content-center"}

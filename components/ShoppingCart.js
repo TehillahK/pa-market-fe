@@ -36,10 +36,15 @@ const ShoppingCart= (props) => {
                     {cart.map((item) => {
 
                         return (cart&&
-                            <ListGroup.Item key={item}>
+                            <ListGroup.Item key={item} >
                                 <div className={"d-flex justify-content-between align-items-center"}>
-                                    <div>
-                                    {`${item.name}  ${item.quantity}${item.quantityType} K${item.cost}`}
+                                    <div className={"d-flex flex-column"}>
+                                        <h4>{item.name} </h4>
+                                        <div style={{lineHeight:"0.5rem",paddingLeft:"1.5rem",fontSize:"1rem"}} className={"d-flex flex-column align-items-start"}>
+                                            <p>Product description</p>
+                                            <p>{item.quantity}{item.quantityType}</p>
+                                            <p>price K{item.cost} </p>
+                                        </div>
                                     </div>
                                     <Button variant="link"
                                             onClick={
@@ -59,7 +64,7 @@ const ShoppingCart= (props) => {
 
                 }
 
-                <div className="d-grid">
+                <div style={{marginTop:"1rem"}} className="d-grid">
                     <Button variant="primary" size="lg">
                     Checkout
                     </Button>
