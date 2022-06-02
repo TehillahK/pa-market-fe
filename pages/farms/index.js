@@ -41,17 +41,17 @@ export default function Farms({ ufarms }) {
           <Col></Col>
         </Row>
       </Container>
-      <Container >
+      <Container  >
         <h2>Farms near you</h2>
-        <Col xs={1} md={1} lg={1} className="justify-content-md-center ">
+        <Row  className="d-flex justify-content-center  ">
           {farms.map((farm) => {
             return (
-              <div key={farm._id} md={4}>
-                <FarmCard  farm={farm} />;
-              </div>
+              <Row   key={farm._id} md={4} className={"mb-2"}>
+                <FarmCard  farm={farm} />
+              </Row>
             );
           })}
-        </Col>
+        </Row>
       </Container>
     </div>
   );
