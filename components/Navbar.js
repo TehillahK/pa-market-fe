@@ -14,7 +14,7 @@ import {
 export default function NavBar(props) {
   const userAddress = props.address;
   return (
-    <Navbar expand="lg">
+    <Navbar className={"pa-nav-bar"} expand="lg">
       <Container fluid>
         <Navbar.Brand href="#">PaMarket</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
