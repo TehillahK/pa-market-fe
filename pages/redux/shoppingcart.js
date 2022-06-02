@@ -18,7 +18,7 @@ export const shoppingCartSlice = createSlice({
         removeCartItem:(state,action)=>{
             for (let i = 0; i < state.cart.length ; i++) {
                     if (state.cart[i].id === action.payload){
-                        state.totalCost = state.totalCost - state.cart.cost;
+                        state.totalCost = state.totalCost - state.cart[i].cost;
                         state.cart.splice(i,1);
                         if (isNaN(state.totalCost)){
                             state.totalCost =0;

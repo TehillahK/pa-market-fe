@@ -13,6 +13,7 @@ import FarmHeader from "../../components/FarmHeader";
 import FarmCropNav from "../../components/FarmCropNav";
 import CropCard from "../../components/CropCard";
 import {useState} from "react";
+import {addCrops} from "../redux/crops";
 
 export const getStaticPaths = async () => {
   const res = await fetch(`http://127.0.0.1:5000/api/farms`);
@@ -46,10 +47,11 @@ export default function Farms({ farm, crops }) {
   const router = useRouter();
   const { id } = router.query;
   // const {farms} = useSelector((state)=> state.farms)
-
+  const dispatch = useDispatch()
   //console.log(farm)
   const farmName = farm.name;
   const farmCrops = crops.produce;
+  dispatch(addCrops(farmCrops))
   return (
       <div>
         <Head>
