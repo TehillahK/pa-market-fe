@@ -8,6 +8,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { changeAddress } from "../redux/user";
 import { addFarms } from "../redux/farms";
+import AdsCarousel from "../../components/AdsCarousel";
 // Getting data from api ,dont forget to run the python api
 export async function getServerSideProps() {
   // Fetch data from external API
@@ -36,14 +37,14 @@ export default function Farms({ ufarms }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      <Container>
-        <Row>
-          <Col></Col>
+      <Container className={"d-flex flex-column justify-content-center flex-nowrap "} >
+        <Row style={{width:"92%"}}>
+          <AdsCarousel />
         </Row>
       </Container>
       <Container  >
         <h2>Farms near you</h2>
-        <Row  className="d-flex justify-content-center  ">
+        <Row  className="d-flex flex-column justify-content-center flex-nowrap ">
           {farms.map((farm) => {
             return (
               <Row   key={farm._id} md={4} className={"mb-2"}>
