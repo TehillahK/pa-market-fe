@@ -62,15 +62,19 @@ const AddressSetter = (props) => {
     const newDropStatus = (status) => setNewAddressClicked(status)
     return (
         <>
-        <div className={"d-flex flex-column"}>
+        <div style={{marginLeft:"0.5rem"}} className={"d-flex flex-column"}>
 
             <a
+                className={"d-flex flex-column  "}
+                style={{lineHeight:"0.4rem"}}
                 onClick={
                     () => {
                         setAddressClicked(!addressClicked);
                     }
                 }
-            >Address&#x25bc;
+            >
+                <p  className={"fw-bold "}>Deliver to  Address</p>
+                <p className={"fw-bold "}>at Time &#x25bc;</p>
             </a>
 
             <ListGroup className="form-check" style={{position: "absolute", marginTop: "1.3rem", width: "15rem"}}>

@@ -19,6 +19,14 @@ a {
 .pa-nav-bar{
   background-color: white;
   height:6rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+ display: flex;
+flex-direction: row;
+  align-items: center;
+}
+
+.sort-btn{
+  background-color: white;
+}
+.sort-btn:active {
+  box-shadow: none !important;
 }

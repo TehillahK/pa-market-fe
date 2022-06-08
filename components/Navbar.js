@@ -9,11 +9,74 @@ import {
     FormControl,
     Container,
     Row,
-    SplitButton, Col
+    SplitButton, Col, Offcanvas, ListGroup
 } from "react-bootstrap";
 import AddressSetter from "./AddressSetter";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faReceipt, faUserCircle} from "@fortawesome/free-solid-svg-icons";
+import {useState} from "react";
+
+
+function OffCanvasExample({ name, ...props }) {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    return (
+        <>
+            <a variant="primary" onClick={handleShow} className="me-2">
+
+                <FontAwesomeIcon icon={faUserCircle} style={{fontSize: "1.3rem"}}/>
+            </a>
+            <Offcanvas show={show} onHide={handleClose} {...props}>
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>User Name</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                    <div className={"d-flex flex-column justify-content-between"}>
+                        <Link className={"d-flex"} href={""}>
+
+                            <div className={"d-flex flex-row "}>
+                                <FontAwesomeIcon icon={faReceipt}/>
+                                <p style={{marginLeft:"1rem"}}> Order History</p>
+                            </div>
+                        </Link>
+                        <Link className={"d-flex"} href={""}>
+                            <div className={"d-flex flex-row "}>
+                                <FontAwesomeIcon icon={faReceipt}/>
+                                <p style={{marginLeft:"1rem"}}> Order History</p>
+                            </div>
+                        </Link>
+
+                        <Link className={"d-flex"} href={""}>
+                            <div className={"d-flex flex-row "}>
+                                <FontAwesomeIcon icon={faReceipt}/>
+                                <p style={{marginLeft:"1rem"}}> Log out</p>
+                            </div>
+                        </Link>
+                    </div>
+                </Offcanvas.Body>
+            </Offcanvas>
+        </>
+    );
+}
+
+const SortBtn = () => {
+  return(
+      <NavDropdown title="Sort" id="collasible-nav-dropdown" >
+          <NavDropdown.Item >
+              Rating
+              <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+
+          </NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+      </NavDropdown>
+  )
+}
 
 export default function NavBar(props) {
     const userAddress = props.address;
@@ -31,7 +94,7 @@ export default function NavBar(props) {
                         </Row>
                     </Col>
                     <Col xs={6}>
-                        <Row className={" d-flex justify-content-center align-items-center"}>
+                        <div className={" d-flex flex-row justify-content-center align-items-center"}>
                             <input
                                 className={"shadow rounded\""}
                                 placeholder={"Search Farm"}
@@ -45,10 +108,8 @@ export default function NavBar(props) {
                                     fontSize: "18px"
                                 }}
                             />
-                            <Col sm>
-                                Sort
-                            </Col>
-                        </Row>
+                            <SortBtn />
+                        </div>
                     </Col>
 
                     <Col sm>
@@ -61,7 +122,10 @@ export default function NavBar(props) {
                             </Link>
 
                             <Link href={"/"}>
-                                <FontAwesomeIcon icon={faUserCircle} style={{fontSize: "1.3rem"}}/>
+                                <OffCanvasExample  placement={'end'} name={'end'}>
+                                    <FontAwesomeIcon icon={faUserCircle} style={{fontSize: "1.3rem"}}/>
+                                </OffCanvasExample>
+
                             </Link>
 
                         </div>
