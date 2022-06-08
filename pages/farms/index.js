@@ -6,8 +6,8 @@ import NavBar from "../../components/Navbar";
 import FarmCard from "../../components/FarmCard";
 import { Row, Col, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { changeAddress } from "../redux/user";
-import { addFarms } from "../redux/farms";
+import { changeAddress } from "../../redux/user";
+import { addFarms } from "../../redux/farms";
 import AdsCarousel from "../../components/AdsCarousel";
 // Getting data from api ,dont forget to run the python api
 export async function getServerSideProps() {
@@ -46,6 +46,7 @@ export default function Farms({ ufarms }) {
         <h2>Farms near you</h2>
         <Row  className="d-flex flex-column justify-content-center flex-nowrap ">
           {farms.map((farm) => {
+              console.log(farm._id.$oid)
             return (
               <Row   key={farm._id} md={4} className={"mb-2"}>
                 <FarmCard  farm={farm} />

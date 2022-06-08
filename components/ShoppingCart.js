@@ -5,7 +5,7 @@ import FarmCard from "./FarmCard";
 import {useState} from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCoffee, faCircleInfo, faStar, faTruck, faTrash} from '@fortawesome/free-solid-svg-icons'
-import {removeCartItem, setFarmID, setFarmName} from "../pages/redux/shoppingcart";
+import {removeCartItem, setFarmID, setFarmName} from "../redux/shoppingcart";
 import CropSelector from "./CropSelector";
 
 function CartItems(props) {
@@ -74,7 +74,7 @@ const ShoppingCart = (props) => {
                                 onClick={
                                     () => {
                                         dispatch(setFarmName(farm.name))
-                                        dispatch(setFarmID(farm._id))
+                                        dispatch(setFarmID(farm._id.$oid))
                                     }
                                 }
                         >

@@ -70,7 +70,7 @@ const AddressSetter = (props) => {
                         setAddressClicked(!addressClicked);
                     }
                 }
-            >Address<FontAwesomeIcon icon={faArrowDown}/>
+            >Address&#x25bc;
             </a>
 
             <ListGroup className="form-check" style={{position: "absolute", marginTop: "1.3rem", width: "15rem"}}>

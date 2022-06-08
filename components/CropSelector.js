@@ -1,28 +1,30 @@
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {Button, Image, Modal} from "react-bootstrap";
-import {addCartItem} from "../pages/redux/shoppingcart";
+import {addCartItem} from "../redux/shoppingcart";
 
 const CropSelector = (props) => {
-    const [amount, setAmount] = useState(1);
-    const [cost, setCost] = useState(2)
-    const dispatch = useDispatch()
     const crop = props.crop;
+    const price = crop.price;
+    const [amount, setAmount] = useState(1);
+    const [cost, setCost] = useState(price)
+    const dispatch = useDispatch()
+
 
     const increase = () => {
         let currAmount = amount
         setAmount(++currAmount)
-        setCost(2 * currAmount)
+        setCost(price * currAmount)
     }
     const decrease = () => {
         let currAmount = amount
         if (currAmount > 1) {
             setAmount(--currAmount);
-            setCost(2 * currAmount);
+            setCost(price * currAmount);
         }
     }
     const createCartItem = (quantity, quantityType, cost, name) => {
-        return {id: crop._id, "name": name, "quantity": quantity, "quantityType": quantityType, "cost": cost}
+        return {id: crop._id.$oid, "name": name, "quantity": quantity, "quantityType": quantityType, "cost": cost}
     }
     return (
         <Modal
@@ -47,7 +49,7 @@ const CropSelector = (props) => {
                         decrease()
                     }}>-
                     </button>
-                    <p>{amount} kg</p>
+                    <p>{amount} {crop.priceUnit}</p>
                     <button onClick={() => {
                         increase()
                     }}>+

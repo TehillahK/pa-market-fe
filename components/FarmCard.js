@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const FarmCard = (props) => {
   const farm = props.farm;
   return (
-    <Link href={`/farms/${farm._id}`} >
+    <Link href={`/farms/${farm._id.$oid}`} >
       <div className={"d-flex flex-row justify-content-between align-items-center shadow mb-5 bg-body rounded"}
            style={{height:"10rem",width:"90%"}}
       >

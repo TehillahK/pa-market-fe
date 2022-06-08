@@ -19,4 +19,6 @@ a {
 .pa-nav-bar{
   background-color: white;
   height:6rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
