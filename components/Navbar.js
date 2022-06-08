@@ -15,6 +15,7 @@ import AddressSetter from "./AddressSetter";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faReceipt, faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
+import styles from '../styles/Home.module.css'
 
 
 function OffCanvasExample({ name, ...props }) {
@@ -35,22 +36,22 @@ function OffCanvasExample({ name, ...props }) {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <div className={"d-flex flex-column justify-content-between"}>
-                        <Link className={"d-flex"} href={""}>
+                        <Link style={{textDecoration:"none"}}  href={""}>
 
-                            <div className={"d-flex flex-row "}>
+                            <div className={"d-flex flex-row p-3"}>
                                 <FontAwesomeIcon icon={faReceipt}/>
                                 <p style={{marginLeft:"1rem"}}> Order History</p>
                             </div>
                         </Link>
-                        <Link className={"d-flex"} href={""}>
-                            <div className={"d-flex flex-row "}>
+                        <Link style={{textDecoration:"none"}} className={"d-flex"} href={""}>
+                            <div className={"d-flex flex-row  p-3"}>
                                 <FontAwesomeIcon icon={faReceipt}/>
                                 <p style={{marginLeft:"1rem"}}> Order History</p>
                             </div>
                         </Link>
 
-                        <Link className={"d-flex"} href={""}>
-                            <div className={"d-flex flex-row "}>
+                        <Link style={{textDecoration:"none"}} className={"d-flex"} href={""}>
+                            <div className={"d-flex flex-row  p-3"}>
                                 <FontAwesomeIcon icon={faReceipt}/>
                                 <p style={{marginLeft:"1rem"}}> Log out</p>
                             </div>
@@ -87,8 +88,8 @@ export default function NavBar(props) {
                     <Col sm>
                         <Row >
                             <div className={"d-flex"}>
-                                <Link href={"/"}>PaMarket Logo</Link>
-                                <span className={"ms-1"} />
+                                <Link href={"/"}>Logo</Link>
+                                <span className={"ms-3"} />
                                 <AddressSetter  />
                             </div>
                         </Row>
@@ -113,13 +114,7 @@ export default function NavBar(props) {
                     </Col>
 
                     <Col sm>
-                        <div className={"d-flex flex-row justify-content-end"}>
-                            <Link href={"/"}>
-                                <FontAwesomeIcon icon={faReceipt} style={{fontSize: "1.3rem"}}/>
-                            </Link>
-                            <Link href={"/"}>
-                                <FontAwesomeIcon icon={faReceipt} style={{fontSize: "1.3rem"}}/>
-                            </Link>
+                        <div className={"d-flex flex-row justify-content-end "}>
 
                             <Link href={"/"}>
                                 <OffCanvasExample  placement={'end'} name={'end'}>
