@@ -7,7 +7,9 @@ export const userSlice = createSlice({
       lastName:"Kangamba",
       email:"tehillahkangamba@gmail.com",
       phoneNumber:"",
-      address:"63rd 10 street"
+      addresses:[
+
+      ]
     },
     reducers: {
 

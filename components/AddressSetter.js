@@ -1,4 +1,4 @@
-import {Button, Dropdown, ListGroup} from "react-bootstrap";
+import {Button, Dropdown, ListGroup, NavDropdown, NavItem, NavLink} from "react-bootstrap";
 import {useState, createContext, useContext} from "react";
 import {
     faArrowCircleDown,
@@ -55,6 +55,22 @@ function DropDownMenu(props) {
     )
 }
 
+const DropDown2 = () => {
+  return(
+      <Dropdown as={NavItem} autoClose={"outside"}>
+          <Dropdown.Toggle  style={{textDecoration:"none",color:"black"}} className={"fw-bold "} as={NavLink}>
+
+                Deliver to Address<br/>at time
+
+          </Dropdown.Toggle>
+          <Dropdown.Menu >
+              <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+              <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+          </Dropdown.Menu>
+      </Dropdown>
+  )
+}
+
 const AddressSetter = (props) => {
     const [newAddressClicked, setNewAddressClicked] = useState(false)
     const [addressClicked, setAddressClicked] = useState(false);
@@ -62,7 +78,7 @@ const AddressSetter = (props) => {
     const newDropStatus = (status) => setNewAddressClicked(status)
     return (
         <>
-        <div style={{marginLeft:"0.5rem"}} className={"d-flex flex-column"}>
+      {/*  <div style={{marginLeft:"0.5rem"}} className={"d-flex flex-column"}>
 
             <a
                 className={"d-flex flex-column  "}
@@ -91,7 +107,8 @@ const AddressSetter = (props) => {
                     newDropStatus(false)
                 }
             }
-            />
+            />*/}
+            <DropDown2 />
         </>
     );
 };

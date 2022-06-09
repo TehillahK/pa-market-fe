@@ -42,8 +42,9 @@ export default function Farms({ ufarms }) {
           <AdsCarousel />
         </Row>
       </Container>
-      <Container  >
-        <h2>Farms near you</h2>
+        <span />
+      <Container className={"justify-content-center"}  >
+        <h2 style={{marginTop:"1rem"}}>Farms near you</h2>
         <Row  className="d-flex flex-column justify-content-center flex-nowrap ">
           {farms.map((farm) => {
               console.log(farm._id.$oid)

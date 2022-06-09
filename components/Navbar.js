@@ -65,7 +65,7 @@ function OffCanvasExample({ name, ...props }) {
 
 const SortBtn = () => {
   return(
-      <NavDropdown title="Sort" id="collasible-nav-dropdown" >
+      <NavDropdown title="Sort" id="collasible-nav-dropdown"    >
           <NavDropdown.Item >
               Rating
               <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
@@ -79,15 +79,17 @@ const SortBtn = () => {
   )
 }
 
+
+
 export default function NavBar(props) {
     const userAddress = props.address;
     return (
         <nav className={"pa-nav-bar"}  >
-            <Container className={"justify-content-center align-items-center"} fluid>
+            <Container style={{textDecoration:"none",color:"black"}} className={"justify-content-center align-items-center fw-bold text-black"} fluid>
                 <Row className={" d-flex align-items-center"}>
                     <Col sm>
                         <Row >
-                            <div className={"d-flex"}>
+                            <div className={"d-flex flex-row align-items-center"}>
                                 <Link href={"/"}>Logo</Link>
                                 <span className={"ms-3"} />
                                 <AddressSetter  />
@@ -109,14 +111,14 @@ export default function NavBar(props) {
                                     fontSize: "18px"
                                 }}
                             />
-                            <SortBtn />
+                            <SortBtn style={{textDecoration:"none",color:"black"}} />
                         </div>
                     </Col>
 
                     <Col sm>
                         <div className={"d-flex flex-row justify-content-end "}>
 
-                            <Link href={"/"}>
+                            <Link style={{textDecoration:"none",color:"black"}} href={"/"}>
                                 <OffCanvasExample  placement={'end'} name={'end'}>
                                     <FontAwesomeIcon icon={faUserCircle} style={{fontSize: "1.3rem"}}/>
                                 </OffCanvasExample>
