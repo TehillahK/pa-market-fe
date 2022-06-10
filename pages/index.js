@@ -4,10 +4,19 @@ import NavBar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {changeAddress} from "../redux/user";
+import {Col, Container, Row} from "react-bootstrap";
+import coverImg from "../public/cover-img.jpg"
+import Link from "next/link";
 
 export default function Home() {
     const {address} = useSelector((state) => state.user)
     console.log(address)
+    const sectionStyle = {
+        backgroundImage: `url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80")`,
+        width: "100%",
+        backgroundRepeat: "no-repeat"
+
+    };
     return (
         <div>
             <Head>
@@ -24,12 +33,148 @@ export default function Home() {
                     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,300&display=swap"
                     rel="stylesheet"/>
             </Head>
-            <header>
-              
+            <header className={styles.landingImage}>
+
                 <NavBar address={address}/>
+                <Container className={" d-flex justify-content-center align-items-center"}>
+                    <Row style={{paddingTop: "10rem"}} className={"align-items-center"}>
+                        <div className={"d-flex flex-column justify-content-center align-items-center"}>
+                            <p className={"fs-1"}>Your Favourites</p>
+                            <input placeholder={"Put in location"}/>
+
+                        </div>
+                    </Row>
+                </Container>
             </header>
-            <main className={styles.main}>
-                 </main>
+
+            <main style={{marginTop: "5rem"}}>
+                <Container className={"justify-content-center "}>
+                    <Row className={"align-items-center"}>
+                        <Col>
+                            <Image
+                                src={"https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=791&q=80"}
+                                height={300} width={400} objectFit={"cover"}/>
+                        </Col>
+                        <Col xs={7}>
+                            <div className={"d-flex flex-column justify-content-between"}>
+                                <h1>What is Pa Market?</h1>
+                                <p style={{textAlign: "justify", textJustify: "inter-word"}}>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in metus quis nunc
+                                    accumsan
+                                    feugiat. Fusce quis tellus ultricies, suscipit urna vitae, imperdiet odio.
+                                    Pellentesque
+                                    ultrices
+                                    maximus purus a viverra. Duis lobortis et quam ac porta. Duis facilisis convallis
+                                    lobortis.
+                                    In
+                                    rhoncus gravida leo. Morbi at enim sapien. Donec cursus urna mauris, ut ullamcorper
+                                    ipsum
+                                    vehicula eu. Integer consequat magna ac rutrum laoreet. Nam tortor lacus, maximus at
+                                    est
+                                    aliquam, ultricies laoreet turpis. Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing
+                                    elit.
+                                    Morbi luctus tincidunt tristique. Sed id enim lectus. Curabitur nec fermentum felis.
+                                    Duis
+                                    cursus
+                                    vulputate orci ut porta.
+                                </p>
+                            </div>
+                        </Col>
+
+                    </Row>
+                </Container>
+                <Container style={{marginTop: "5rem"}}>
+                    <Row>
+                        <Col>
+                            <div className={"d-flex flex-column justify-content-center align-items-center"}>
+                                <Image
+                                    src={"https://images.unsplash.com/photo-1593035013811-2db9b3c36980?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"}
+                                    height={200}
+                                    width={300}
+                                    objectFit={"cover"}
+                                />
+                                <h3>Become a Driver</h3>
+                                <p style={{textAlign: "center", textJustify: "inter-word"}}>As a driver you'll Lorem
+                                    ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <Link href={"/"}>Join</Link>
+                            </div>
+                        </Col>
+                        <Col>
+                            <div className={"d-flex flex-column justify-content-center align-items-center"}>
+                                <Image
+                                    src={"https://images.unsplash.com/photo-1596788068873-9ffd5cacd4c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80"}
+                                    height={200}
+                                    width={300}
+                                    objectFit={"cover"}
+                                />
+                                <h3>Become a Farm Partner</h3>
+                                <p style={{textAlign: "center", textJustify: "inter-word"}}>As a driver you'll Lorem
+                                    ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <Link href={"/"}>Join</Link>
+                            </div>
+                        </Col>
+                        <Col>
+                            <div className={"d-flex flex-column justify-content-center align-items-center"}>
+                                <Image
+                                    src={"https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/Web%201920%20%E2%80%93%201.png?alt=media&token=70a800bf-e659-4e80-a346-d9354d3207c4"}
+                                    height={200}
+                                    width={300}
+                                    objectFit={"contain"}
+                                />
+                                <h3>Get the app</h3>
+                                <p style={{textAlign: "center", textJustify: "inter-word"}}>As a driver you'll Lorem
+                                    ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <Link href={"/"}>Download</Link>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+                <Container style={{marginTop: "5rem"}}>
+                    <Row className={"align-items-center"}>
+                        <Col xs={7}>
+                            <div className={"d-flex flex-column justify-content-between"}>
+                                <h1>Careers</h1>
+                                <p style={{textAlign: "justify", textJustify: "inter-word"}}>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in metus quis nunc
+                                    accumsan feugiat. Fusce quis tellus ultricies, suscipit urna vitae, imperdiet odio.
+                                </p>
+                                <ul>
+                                    <li>
+                                        <Link href={"/"}>Business Analysts</Link>
+                                    </li>
+                                    <li>
+                                        <Link href={"/"}>Software Engineers</Link>
+                                    </li>
+
+                                    <li>
+                                        <Link href={"/"}>Web Developers</Link>
+                                    </li>
+                                    <li>
+                                        <Link href={"/"}>Mobile App Developers</Link>
+                                    </li>
+                                    <li>
+                                        <Link href={"/"}>IT professionals</Link>
+                                    </li>
+                                    <li>
+                                        <Link href={"/"}>Human Resource Managers</Link>
+                                    </li>
+                                    <li>
+                                        <Link href={"/"}>Lawyers</Link>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </Col>
+                        <Col>
+                            <Image
+                                src={"https://images.unsplash.com/photo-1637684666772-1f215bfd0f5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80"}
+                                height={600} width={400} objectFit={"cover"}/>
+                        </Col>
+                    </Row>
+                </Container>
+            </main>
 
             <footer className={styles.footer}>
                 <a

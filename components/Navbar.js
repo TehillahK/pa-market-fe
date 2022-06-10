@@ -89,8 +89,8 @@ export default function NavBar(props) {
         <nav className={"pa-nav-bar"}>
             <Container style={{textDecoration: "none", color: "black"}}
                        className={"justify-content-center align-items-center fw-bold text-black"} fluid>
-                <Row className={" d-flex align-items-center"}>
-                    <Col sm>
+                <Row className={" d-flex flex-row align-items-center"}>
+                    <Col sm >
                         <Row>
                             <div className={"d-flex flex-row align-items-center"}>
                                 <Link href={"/"}>Logo</Link>
@@ -99,7 +99,7 @@ export default function NavBar(props) {
                             </div>
                         </Row>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={5} >
                         <div className={" d-flex flex-row justify-content-center align-items-center"}>
                             {user ?
                                 <>
@@ -123,7 +123,7 @@ export default function NavBar(props) {
                         </div>
                     </Col>
 
-                    <Col sm>
+                    <Col sm >
                         <div className={"d-flex flex-row justify-content-end "}>
                             {user && (
                                 <>

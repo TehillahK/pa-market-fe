@@ -37,8 +37,10 @@ export default function Farms({ufarms}) {
                 <meta name="description" content="Farm"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <NavBar/>
-            <main  className={"bg-app"}>
+            <header style={{backgroundColor: "white"}}>
+                <NavBar/>
+            </header>
+            <main className={"bg-app"}>
 
 
                 <Container className={"d-flex flex-column justify-content-center flex-nowrap "}>
@@ -60,6 +62,7 @@ export default function Farms({ufarms}) {
                         })}
                     </Row>
                 </Container>
+
             </main>
         </div>
     );

@@ -17,14 +17,15 @@ a {
 }
 
 .pa-nav-bar{
-  background-color: white;
+
   height:6rem;
  display: flex;
 flex-direction: row;
   align-items: center;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   margin-bottom: 1rem;
+
 }
 
 .sort-btn{
