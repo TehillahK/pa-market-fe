@@ -38,3 +38,10 @@ flex-direction: row;
 .bg-app{
   background-color: #f5f3f1;
 }
+@media (max-width: 600px) {
+ .pa-nav-bar{
+   padding-right: 0;
+   padding-left: 0;
+   margin-bottom: 0;
+ }
+}

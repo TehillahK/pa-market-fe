@@ -10,6 +10,7 @@ import {changeAddress} from "../../redux/user";
 import {addFarms} from "../../redux/farms";
 import AdsCarousel from "../../components/AdsCarousel";
 import styles from "../../styles/Home.module.css";
+import {useMediaQuery} from "react-responsive";
 
 // Getting data from api ,dont forget to run the python api
 export async function getServerSideProps() {
@@ -30,6 +31,7 @@ export default function Farms({ufarms}) {
     dispatch(addFarms(ufarms))
     const {farms} = useSelector((state) => state.farms);
     console.log(address);
+    const isMobile = useMediaQuery({query: `(max-width: 800px)`})
     return (
         <div>
             <Head>
@@ -37,13 +39,27 @@ export default function Farms({ufarms}) {
                 <meta name="description" content="Farm"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <header style={{backgroundColor: "white"}}>
+            <header className={"d-flex flex-column"} style={{backgroundColor: "white",height:"6rem"}}>
                 <NavBar/>
+                { isMobile&& <input
+                        className={"shadow rounded"}
+                        placeholder={"Search Farm"}
+                        style={{
+                            height: "55px",
+                            width: "100%",
+                            outline: "none",
+                            border: "none",
+                            borderRadius: "5px",
+                            padding: "0 60px 0 20px",
+                            fontSize: "18px"
+                        }}
+                    />
+                }
             </header>
             <main className={"bg-app"}>
 
 
-                <Container className={"d-flex flex-column justify-content-center flex-nowrap "}>
+                <Container  className={"d-flex flex-column justify-content-center flex-nowrap "}>
                     <Row style={{width: "92%"}}>
                         <AdsCarousel/>
                     </Row>

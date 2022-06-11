@@ -17,6 +17,7 @@ import {faReceipt, faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 import styles from '../styles/Home.module.css'
 import {useUser} from "@auth0/nextjs-auth0";
+import {useMediaQuery} from "react-responsive";
 
 
 function OffCanvasExample({name, ...props}) {
@@ -85,6 +86,7 @@ const SortBtn = () => {
 export default function NavBar(props) {
     const userAddress = props.address;
     const {user, error, isLoading} = useUser();
+    const isMobile = useMediaQuery({query: `(max-width: 760px)`})
     return (
         <nav className={"pa-nav-bar"}>
             <Container style={{textDecoration: "none", color: "black"}}
@@ -94,12 +96,15 @@ export default function NavBar(props) {
                         <Row>
                             <div className={"d-flex flex-row align-items-center"}>
                                 <Link href={"/"}>Logo</Link>
-                                <span className={"ms-3"}/>
-                                {user&& <AddressSetter/>}
+                                <span className={"d-none d-sm-block ms-3"}/>
+                                {user&& !isMobile && <AddressSetter/>}
                             </div>
                         </Row>
                     </Col>
-                    <Col xs={0} lg={5} >
+                    {
+                        isMobile && <Col  className={" d-flex flex-row justify-content-center align-items-center"} sm={3}> <AddressSetter /> </Col>
+                    }
+                    <Col xs={2} lg={5} className={"d-none d-sm-block"} >
                         <div className={" d-flex flex-row justify-content-center align-items-center"}>
                             {user ?
                                 <>
@@ -133,7 +138,7 @@ export default function NavBar(props) {
                                             <OffCanvasExample placement={'end'} name={'end'}>
                                                 <FontAwesomeIcon icon={faUserCircle} style={{fontSize: "1.3rem"}}/>
                                             </OffCanvasExample>
-                                            {user.nickname}
+
                                         </div>
                                     </a>
 
