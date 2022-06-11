@@ -36,26 +36,26 @@ export default function Home() {
             <header className={styles.landingImage}>
 
                 <NavBar address={address}/>
-                <Container className={" d-flex justify-content-center align-items-center"}>
-                    <Row style={{paddingTop: "10rem"}} className={"align-items-center"}>
-                        <div className={"d-flex flex-column justify-content-center align-items-center"}>
+                <Container className={" justify-content-center align-items-center text-center"}>
+                    <Row  className={" justify-content-center align-items-center"}>
+                        <Col className={"d-flex flex-column justify-content-center align-items-center"}>
                             <p className={"fs-1"}>Your Favourites</p>
                             <input placeholder={"Put in location"}/>
 
-                        </div>
+                        </Col>
                     </Row>
                 </Container>
             </header>
 
-            <main style={{marginTop: "5rem"}}>
-                <Container className={"justify-content-center "}>
-                    <Row className={"align-items-center"}>
-                        <Col>
+            <main >
+                <Container style={{marginTop:"1rem"}} className={"justify-content-center "}>
+                    <Row sm={2} className={"align-items-center"}>
+                        <Col lg={5}>
                             <Image
                                 src={"https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=791&q=80"}
-                                height={300} width={400} objectFit={"cover"}/>
+                                height={400} width={500} objectFit={"cover"}/>
                         </Col>
-                        <Col xs={7}>
+                        <Col lg={6}>
                             <div className={"d-flex flex-column justify-content-between"}>
                                 <h1>What is Pa Market?</h1>
                                 <p style={{textAlign: "justify", textJustify: "inter-word"}}>
@@ -85,9 +85,9 @@ export default function Home() {
                     </Row>
                 </Container>
                 <Container style={{marginTop: "5rem"}}>
-                    <Row>
-                        <Col>
-                            <div className={"d-flex flex-column justify-content-center align-items-center"}>
+                    <Row className={"justify-content-between"}  md={3} lg={1}>
+                        <Col md={1} lg={3}>
+                            <div className={"d-flex flex-column justify-content-center align-items-center text-center"}>
                                 <Image
                                     src={"https://images.unsplash.com/photo-1593035013811-2db9b3c36980?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80"}
                                     height={200}
@@ -100,8 +100,8 @@ export default function Home() {
                                 <Link href={"/"}>Join</Link>
                             </div>
                         </Col>
-                        <Col>
-                            <div className={"d-flex flex-column justify-content-center align-items-center"}>
+                        <Col md={1} lg={3}>
+                            <div className={"d-flex flex-column justify-content-center align-items-center text-center"}>
                                 <Image
                                     src={"https://images.unsplash.com/photo-1596788068873-9ffd5cacd4c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80"}
                                     height={200}
@@ -114,8 +114,8 @@ export default function Home() {
                                 <Link href={"/"}>Join</Link>
                             </div>
                         </Col>
-                        <Col>
-                            <div className={"d-flex flex-column justify-content-center align-items-center"}>
+                        <Col md={1} lg={3}>
+                            <div className={"d-flex flex-column justify-content-center align-items-center text-center"}>
                                 <Image
                                     src={"https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/Web%201920%20%E2%80%93%201.png?alt=media&token=70a800bf-e659-4e80-a346-d9354d3207c4"}
                                     height={200}
@@ -131,8 +131,8 @@ export default function Home() {
                     </Row>
                 </Container>
                 <Container style={{marginTop: "5rem"}}>
-                    <Row className={"align-items-center"}>
-                        <Col xs={7}>
+                    <Row xs={1} lg={2}  className={"justify-content-center align-items-center"}>
+                        <Col xs={{order:2}} lg={{order:1}}>
                             <div className={"d-flex flex-column justify-content-between"}>
                                 <h1>Careers</h1>
                                 <p style={{textAlign: "justify", textJustify: "inter-word"}}>
@@ -167,7 +167,7 @@ export default function Home() {
                             </div>
 
                         </Col>
-                        <Col>
+                        <Col xs = {{order: 1}} lg={{order:2}}>
                             <Image
                                 src={"https://images.unsplash.com/photo-1637684666772-1f215bfd0f5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80"}
                                 height={600} width={400} objectFit={"cover"}/>
