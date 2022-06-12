@@ -1,8 +1,9 @@
-import {Card, Button, Image} from "react-bootstrap";
+import {Card, Button} from "react-bootstrap";
 import Link from "next/link";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useMediaQuery} from 'react-responsive'
+import Image from "next/image";
 const MobileCard = (props) => {
     const farm =props.farm;
   return(
@@ -17,14 +18,19 @@ const MobileCard = (props) => {
                   src={"https://images.pexels.com/photos/162240/bull-calf-heifer-ko-162240.jpeg?cs=srgb&dl=pexels-pixabay-162240.jpg&fm=jpg"}
                   alt={`${farm.name}`}
                   fluid={true}
-                  style={{width: "20rem", height: "8rem", objectFit: "cover", margin: "auto"}}
+                 // style={{width: "20rem", height: "8rem", objectFit: "cover", margin: "auto"}}
+                  height={128}
+                  width={320}
+                  objectFit={"cover"}
               />
               <Image
                   className={"justify-content-center"}
                   src={"https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/2__1_-removebg-preview.png?alt=media&token=9b4511a6-509a-4f64-a37a-bb1e860337b5"}
                   alt={`${farm.name} logo`}
                   fluid={true}
-                  style={{width: "10rem", height: "10rem", objectFit: "cover", margin: "auto"}}
+                //  style={{width: "10rem", height: "10rem", objectFit: "cover", margin: "auto"}}
+                  width={160}
+                  height={160}
               />
 
               <div className={"flex-grow-1 ms-3 "}>
@@ -42,6 +48,24 @@ const MobileCard = (props) => {
       </Link>
   )
 }
+const DesktopCard =(props)=>{
+    const farm = props.farm;
+    return(
+        <Link className={"mx-auto"} href={"/"}>
+        <Card  style={{width:"100%"}}>
+            <Card.Img variant="top" src="https://images.pexels.com/photos/162240/bull-calf-heifer-ko-162240.jpeg?cs=srgb&dl=pexels-pixabay-162240.jpg&fm=jpg" />
+            <Card.Body>
+                <div className={"d-flex flex-row  align-items-center "}>
+                    <Card.Title>{farm.name}</Card.Title>
+                </div>
+                <Card.Text>K10 Delivery Fee</Card.Text>
+                <Card.Text><FontAwesomeIcon icon={faStar}/> 4.5</Card.Text>
+
+            </Card.Body>
+        </Card>
+        </Link>
+    )
+}
 const FarmCard = (props) => {
     const isMobile = useMediaQuery({query: `(max-width: 760px)`})
     const farm = props.farm;
@@ -51,7 +75,7 @@ const FarmCard = (props) => {
               !isMobile && <MobileCard farm={farm} />
             }
             {
-                isMobile && <a>yo</a>
+                isMobile && <DesktopCard farm={farm} />
             }
         </>
     );

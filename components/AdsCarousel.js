@@ -22,7 +22,7 @@ const AdsCarousel = () => {
           </Carousel.Item>
           <Carousel.Item>
               <img
-                  className="d-block w-100"
+                  className="d-block w-100 mx-auto"
                   src="https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/Screenshot%202022-06-05%20043325.png?alt=media&token=1253ca2c-3eff-4131-8923-7016a85a02a8"
                   alt="Second slide"
                   style={{height:imageHeight,width:imageWidth,objectFit:imageFit,borderRadius:"2rem"}}

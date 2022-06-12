@@ -14,6 +14,8 @@ import FarmCropNav from "../../components/FarmCropNav";
 import CropCard from "../../components/CropCard";
 import {useState} from "react";
 import {addCrops} from "../../redux/crops";
+import {useMediaQuery} from "react-responsive";
+import ShoppingCartMobile from "../../components/ShoppingCartMobile";
 
 export const getStaticPaths = async () => {
   const res = await fetch(`http://127.0.0.1:5000/api/farms`);
@@ -52,6 +54,7 @@ export default function Farms({ farm, crops }) {
   //console.log(farm)
   const farmName = farm.name;
   const farmCrops = farm.crops;
+  const isMobile = useMediaQuery({query: `(max-width: 800px)`})
   console.log(farm)
   dispatch(addCrops(farmCrops))
   return (
@@ -80,8 +83,8 @@ export default function Farms({ farm, crops }) {
                   })}
                     </Row>
                   </Col>
-                  <Col className="position-sticky" xs lg="5">
-                    <ShoppingCart farm = {farm} />
+                  <Col  xs lg="5">
+                    {!isMobile? <ShoppingCart farm = {farm} /> : <ShoppingCartMobile />}
                   </Col>
                 </Row>
               </Container>

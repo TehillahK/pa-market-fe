@@ -41,7 +41,7 @@ export default function Farms({ufarms}) {
             </Head>
             <header className={"d-flex flex-column"} style={{backgroundColor: "white",height:"6rem"}}>
                 <NavBar/>
-                { isMobile&& <input
+                { isMobile && <input
                         className={"shadow rounded"}
                         placeholder={"Search Farm"}
                         style={{
@@ -59,21 +59,21 @@ export default function Farms({ufarms}) {
             <main className={"bg-app"}>
 
 
-                <Container  className={"d-flex flex-column justify-content-center flex-nowrap "}>
-                    <Row style={{width: "92%"}}>
-                        <AdsCarousel/>
+                <Container  className={"d-flex flex-column justify-content-center flex-nowrap mx-auto "}>
+                    <Row style={{width: "98%"}}>
+                        <AdsCarousel className={"mx-auto"}/>
                     </Row>
                 </Container>
                 <span/>
                 <Container className={"justify-content-center"}>
                     <h2 style={{marginTop: "1rem"}}>Farms near you</h2>
-                    <Row className="d-flex flex-column justify-content-center flex-nowrap ">
+                    <Row lg={1} className="mx-auto justify-content-center ">
                         {farms.map((farm) => {
                             console.log(farm._id.$oid)
                             return (
-                                <Row key={farm._id} md={4} className={"mb-2"}>
+                                <Col md={"auto"} key={farm._id} className={"mx-auto mb-2"}>
                                     <FarmCard farm={farm}/>
-                                </Row>
+                                </Col>
                             );
                         })}
                     </Row>
