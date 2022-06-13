@@ -12,7 +12,7 @@ import ShoppingCart from "../../components/ShoppingCart";
 import FarmHeader from "../../components/FarmHeader";
 import FarmCropNav from "../../components/FarmCropNav";
 import CropCard from "../../components/CropCard";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {addCrops} from "../../redux/crops";
 import {useMediaQuery} from "react-responsive";
 import ShoppingCartMobile from "../../components/ShoppingCartMobile";
@@ -54,9 +54,11 @@ export default function Farms({farm, crops}) {
     //console.log(farm)
     const farmName = farm.name;
     const farmCrops = farm.crops;
+
     const isMobile = useMediaQuery({query: `(max-width: 800px)`})
     console.log(farm)
     dispatch(addCrops(farmCrops))
+
     return (
         <div>
             <Head>
@@ -69,8 +71,8 @@ export default function Farms({farm, crops}) {
 
             <Container fluid>
                 <Row>
-                    { !isMobile &&
-                        <Col xs={1}>
+                    {
+                        <Col className={"d-none d-sm-block"} xs={1}>
                             <FarmCropNav/>
                         </Col>
                     }
@@ -85,8 +87,11 @@ export default function Farms({farm, crops}) {
                                         })}
                                     </Row>
                                 </Col>
-                                <Col xs lg="5">
-                                    {!isMobile ? <ShoppingCart farm={farm}/> : <ShoppingCartMobile/>}
+                                <Col className={"d-none d-sm-block"} xs lg="5">
+                                    <ShoppingCart farm={farm}/>
+                                </Col>
+                                <Col className={"d-block d-sm-none"} xs lg="5">
+                                    {<ShoppingCartMobile/>}
                                 </Col>
                             </Row>
                         </Container>

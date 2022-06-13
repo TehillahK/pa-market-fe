@@ -101,9 +101,9 @@ export default function NavBar(props) {
                             </div>
                         </Row>
                     </Col>
-                    {
-                        isMobile && <Col  className={" d-flex flex-row justify-content-center align-items-center"} sm={3}> <AddressSetter /> </Col>
-                    }
+
+                    <Col  className={" d-flex flex-row justify-content-center align-items-center d-block d-sm-none "} sm={3}> <AddressSetter /> </Col>
+
                     <Col xs={2} lg={5} className={"d-none d-sm-block"} >
                         <div className={" d-flex flex-row justify-content-center align-items-center"}>
                             {user ?
