@@ -6,42 +6,40 @@ import {addCartItem} from "../redux/shoppingcart";
 import CropSelector from "./CropSelector";
 
 
-
-
-const CropCard= (props) => {
+const CropCard = (props) => {
     const [cropShow, setCropShow] = useState(false)
     const crop = props.crop;
     const photoUrl = crop.photoUrl;
     return (
         <>
-        <a
+            <a
 
-            className={"d-flex flex-row justify-content-between shadow mb-5 bg-body rounded"}
-            style={{height:"10rem"}}
-            onClick={
-                ()=>{
-                    setCropShow(true)
+                className={"d-flex flex-row justify-content-between shadow mb-5 bg-body rounded mx-auto"}
+                style={{height: "10rem"}}
+                onClick={
+                    () => {
+                        setCropShow(true)
+                    }
                 }
-            }
-        >
-            <div className={"d-flex flex-column justify-content-center  p-3 "} style={{width:"90%"}}>
-                <Card.Title>{crop.name}</Card.Title>
-                <Card.Text>Description of kind of crop</Card.Text>
-                <Card.Text> K {crop.price} per kg</Card.Text>
-            </div>
-            <Image
-                className={"justify-content-center"}
-                src={photoUrl}
-                alt={`${crop.name}`}
-                fluid={true}
-                style={{width:"8rem",height:"8rem",objectFit:"cover",margin:"auto"}}
-            />
+            >
+                <div className={"d-flex flex-column justify-content-center  p-3 "} style={{width: "100%"}}>
+                    <Card.Title>{crop.name}</Card.Title>
+                    <Card.Text>Description of kind of crop</Card.Text>
+                    <Card.Text> K {crop.price} per kg</Card.Text>
+                </div>
+                <Image
+                    className={"justify-content-center"}
+                    src={photoUrl}
+                    alt={`${crop.name}`}
+                    fluid={true}
+                    style={{width: "8rem", height: "8rem", objectFit: "cover", margin: "auto"}}
+                />
 
-        </a>
+            </a>
             <CropSelector
-                show = {cropShow}
-                onHide={()=>setCropShow(false)}
-                crop ={crop}
+                show={cropShow}
+                onHide={() => setCropShow(false)}
+                crop={crop}
             />
         </>
     );
