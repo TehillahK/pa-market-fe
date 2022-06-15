@@ -39,7 +39,7 @@ export default function Farms({ufarms}) {
                 <meta name="description" content="Farm"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <header className={"d-flex flex-column"} style={{backgroundColor: "white",height:"6rem"}}>
+            <header className={"d-flex flex-column "} style={{backgroundColor: "white",height:"6rem"}}>
                 <NavBar/>
                  <input
                         className={"d-block d-sm-none shadow rounded "}
@@ -56,11 +56,11 @@ export default function Farms({ufarms}) {
                     />
 
             </header>
-            <main className={"bg-app"}>
+            <main className={"bg-app mb-3"}>
 
 
                 <Container  className={"d-flex flex-column justify-content-center flex-nowrap mx-auto "}>
-                    <Row style={{width: "98%"}}>
+                    <Row  className={"mx-auto"} style={{width: "98%"}}>
                         <AdsCarousel className={"mx-auto"}/>
                     </Row>
                 </Container>
@@ -69,9 +69,8 @@ export default function Farms({ufarms}) {
                     <h2 style={{marginTop: "1rem"}}>Farms near you</h2>
                     <Row lg={1} className="mx-auto justify-content-center ">
                         {farms.map((farm) => {
-                            console.log(farm._id.$oid)
                             return (
-                                <Col md={"auto"} key={farm._id} className={"mx-auto mb-2"}>
+                                <Col md={"auto"} key={farm._id.$oid} className={"mx-auto mb-2"}>
                                     <FarmCard farm={farm}/>
                                 </Col>
                             );

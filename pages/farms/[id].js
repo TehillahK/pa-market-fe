@@ -59,7 +59,7 @@ export default function Farms({farm, crops}) {
     dispatch(addCrops(farmCrops))
 
     return (
-        <div>
+        <>
             <Head>
                 <title>{farmName}</title>
                 <meta name="description" content="Farm"/>
@@ -67,36 +67,37 @@ export default function Farms({farm, crops}) {
             </Head>
             <NavBar/>
             <FarmHeader name={farmName}/>
+            <main className={""}>
+                <Container fluid>
+                    <Row>
+                        {
+                            <Col className={"d-none d-sm-block"} xs={1}>
+                                <FarmCropNav/>
+                            </Col>
+                        }
+                        <Col>
+                            <>
+                                <Row className={"justify-content-lg-center mx-auto"}>
+                                    <Col lg={7} md={10}>
 
-            <Container fluid>
-                <Row>
-                    {
-                        <Col className={"d-none d-sm-block"} xs={1}>
-                            <FarmCropNav/>
+                                        <Row className={"mx-auto justify-content-center"}>
+                                            {farmCrops != null && farmCrops.map((crop) => {
+                                                return <CropCard key={crop.name} crop={crop}/>;
+                                            })}
+                                        </Row>
+                                    </Col>
+                                    <Col className={"d-none d-sm-block"} xs lg="5">
+                                        <ShoppingCart farm={farm}/>
+                                    </Col>
+                                    <Col className={"d-block d-sm-none"} xs lg="5">
+                                        {<ShoppingCartMobile/>}
+                                    </Col>
+                                </Row>
+                            </>
                         </Col>
-                    }
-                    <Col>
-                        <>
-                            <Row className={"justify-content-center mx-auto"}>
-                                <Col lg={7} md={10}>
-
-                                    <Row className={"mx-auto justify-content-center"}>
-                                        {farmCrops != null && farmCrops.map((crop) => {
-                                            return <CropCard key={crop.name} crop={crop}/>;
-                                        })}
-                                    </Row>
-                                </Col>
-                                <Col className={"d-none d-sm-block"} xs lg="5">
-                                    <ShoppingCart farm={farm}/>
-                                </Col>
-                                <Col className={"d-block d-sm-none"} xs lg="5">
-                                    {<ShoppingCartMobile/>}
-                                </Col>
-                            </Row>
-                        </>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+                    </Row>
+                </Container>
+            </main>
+        </>
     );
 }

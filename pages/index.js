@@ -7,10 +7,17 @@ import {changeAddress} from "../redux/user";
 import {Col, Container, Row} from "react-bootstrap";
 import coverImg from "../public/cover-img.jpg"
 import Link from "next/link";
+import { useRouter } from 'next/router'
+import {useUser} from "@auth0/nextjs-auth0";
 
 export default function Home() {
     const {address} = useSelector((state) => state.user)
-    console.log(address)
+    const {user, error, isLoading} = useUser();
+    const router = useRouter()
+    const goToFarms =()=> router.push('/farms');
+    if (user){
+        goToFarms()
+    }
     const sectionStyle = {
         backgroundImage: `url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80")`,
         width: "100%",
@@ -18,7 +25,7 @@ export default function Home() {
 
     };
     return (
-        <div>
+        <>
             <Head>
                 <title>PaMarket Farms</title>
                 <meta name="description" content="Pa Market is a hub for "/>
@@ -188,6 +195,6 @@ export default function Home() {
           </span>
                 </a>
             </footer>
-        </div>
+        </>
     )
 }
