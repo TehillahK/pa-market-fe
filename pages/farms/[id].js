@@ -56,7 +56,6 @@ export default function Farms({farm, crops}) {
     const farmCrops = farm.crops;
 
     const isMobile = useMediaQuery({query: `(max-width: 800px)`})
-    console.log(farm)
     dispatch(addCrops(farmCrops))
 
     return (
@@ -77,7 +76,7 @@ export default function Farms({farm, crops}) {
                         </Col>
                     }
                     <Col>
-                        <Container fluid>
+                        <>
                             <Row className={"justify-content-center mx-auto"}>
                                 <Col lg={7} md={10}>
 
@@ -94,7 +93,7 @@ export default function Farms({farm, crops}) {
                                     {<ShoppingCartMobile/>}
                                 </Col>
                             </Row>
-                        </Container>
+                        </>
                     </Col>
                 </Row>
             </Container>

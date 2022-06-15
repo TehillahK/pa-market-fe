@@ -29,10 +29,10 @@ function OffCanvasExample({name, ...props}) {
     const {user, error, isLoading} = useUser();
     return (
         <>
-            <a variant="primary" onClick={handleShow} className="me-2">
+            <Button variant="Link" onClick={handleShow} className="me-2">
 
                 <FontAwesomeIcon icon={faUserCircle} style={{fontSize: "1.3rem"}}/>
-            </a>
+            </Button>
             <Offcanvas show={show} onHide={handleClose} {...props}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>{user.name}</Offcanvas.Title>
