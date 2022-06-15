@@ -97,7 +97,9 @@ export default function NavBar(props) {
                             <div className={"d-flex flex-row align-items-center"}>
                                 <Link href={"/"}>Logo</Link>
                                 <span className={"d-none d-sm-block ms-3"}/>
-                                {user&& !isMobile && <AddressSetter/>}
+                                <div className={"d-none d-lg-block d-xl-none"}>
+                                    {user && <AddressSetter />}
+                                </div>
                             </div>
                         </Row>
                     </Col>
@@ -109,7 +111,7 @@ export default function NavBar(props) {
                             {user ?
                                 <>
                                     <input
-                                        className={"shadow rounded\""}
+                                        className={"shadow rounded"}
                                         placeholder={"Search Farm"}
                                         style={{
                                             height: "55px",

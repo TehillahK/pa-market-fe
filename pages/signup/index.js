@@ -41,43 +41,10 @@ export default function Farms({ufarms}) {
             </Head>
             <header className={"d-flex flex-column"} style={{backgroundColor: "white",height:"6rem"}}>
                 <NavBar/>
-                 <input
-                        className={"d-block d-sm-none shadow rounded "}
-                        placeholder={"Search Farm"}
-                        style={{
-                            height: "55px",
-                            width: "100%",
-                            outline: "none",
-                            border: "none",
-                            borderRadius: "5px",
-                            padding: "0 60px 0 20px",
-                            fontSize: "18px"
-                        }}
-                    />
-
             </header>
             <main className={"bg-app"}>
+                <h1>Sign up</h1>
 
-
-                <Container  className={"d-flex flex-column justify-content-center flex-nowrap mx-auto "}>
-                    <Row style={{width: "98%"}}>
-                        <AdsCarousel className={"mx-auto"}/>
-                    </Row>
-                </Container>
-                <span/>
-                <Container className={"justify-content-center"}>
-                    <h2 style={{marginTop: "1rem"}}>Farms near you</h2>
-                    <Row lg={1} className="mx-auto justify-content-center ">
-                        {farms.map((farm) => {
-                            console.log(farm._id.$oid)
-                            return (
-                                <Col md={"auto"} key={farm._id} className={"mx-auto mb-2"}>
-                                    <FarmCard farm={farm}/>
-                                </Col>
-                            );
-                        })}
-                    </Row>
-                </Container>
 
             </main>
         </div>
