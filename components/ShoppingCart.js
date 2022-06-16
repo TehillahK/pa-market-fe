@@ -7,27 +7,35 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCoffee, faCircleInfo, faStar, faTruck, faTrash} from '@fortawesome/free-solid-svg-icons'
 import {removeCartItem, setFarmID, setFarmName} from "../redux/shoppingcart";
 import CropSelector from "./CropSelector";
-
-function CartItems(props) {
-    const cart = props.cart;
-    return (
-        <ListGroup>
-            {cart.map((cartItem) => {
-                return (
-                    <ListGroup.Item key={cartItem}>
-                        ${`${item.name}  ${item.quantity}${item.quantityType} K${item.cost}`}
-                    </ListGroup.Item>
-                );
-            })}
-        </ListGroup>
-    )
-}
+import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
+import {useUser} from "@auth0/nextjs-auth0";
 
 const ShoppingCart = (props) => {
+    const {user, error, isLoading} = useUser();
     const [cropShow, setCropShow] = useState(false)
     const {cart, totalCost} = useSelector((state) => state.cart);
     const dispatch = useDispatch()
     const farm = props.farm;
+
+    const config = {
+        public_key: process.env["FLUTTER_WAVE_KEY"],
+        tx_ref: Date.now(),
+        amount: totalCost,
+        currency: 'ZMW',
+        payment_options: 'card,mobilemoney,ussd',
+        customer: {
+            email: user.email,
+            phonenumber: '07064586146',
+            name: 'joel ugwumadu',
+        },
+        customizations: {
+            title: 'my Payment Title',
+            description: 'Payment for items in cart',
+            logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
+        },
+    };
+    const handleFlutterPayment = useFlutterwave(config);
+
     return (
         <>
             <Card>
@@ -71,12 +79,15 @@ const ShoppingCart = (props) => {
 
                     <div style={{marginTop: "1rem"}} className="d-grid">
                         <Button variant="primary" size="lg"
-                                onClick={
-                                    () => {
-                                        dispatch(setFarmName(farm.name))
-                                        dispatch(setFarmID(farm._id.$oid))
-                                    }
-                                }
+                                onClick={() => {
+                                    handleFlutterPayment({
+                                        callback: (response) => {
+                                            console.log(response);
+                                            closePaymentModal() // this will close the modal programmatically
+                                        },
+                                        onClose: () => {},
+                                    });
+                                }}
                         >
                             Checkout
                         </Button>
