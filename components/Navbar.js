@@ -98,15 +98,17 @@ export default function NavBar(props) {
                                 <Link href={"/"}>Logo</Link>
                                 <span className={"d-none d-sm-block ms-3"}/>
                                 <div className={"d-none d-xl-block"}>
-                                    {user && <AddressSetter />}
+                                    {user && <AddressSetter/>}
                                 </div>
                             </div>
                         </Row>
                     </Col>
 
-                    <Col  className={" d-flex flex-row justify-content-center align-items-center d-block d-sm-none "} sm={3}> <AddressSetter /> </Col>
+                    <Col className={" d-flex flex-row justify-content-center align-items-center d-block d-sm-none "}
+                         sm={3}> <AddressSetter/>
+                    </Col>
 
-                    <Col xs={2} lg={5} className={"d-none d-sm-block"} >
+                    <Col xs={2} lg={5} className={"d-none d-sm-block"}>
                         <div className={" d-flex flex-row justify-content-center align-items-center"}>
                             {user ?
                                 <>
@@ -130,7 +132,7 @@ export default function NavBar(props) {
                         </div>
                     </Col>
 
-                    <Col sm >
+                    <Col sm>
                         <div className={"d-flex flex-row justify-content-end "}>
                             {user && (
                                 <>

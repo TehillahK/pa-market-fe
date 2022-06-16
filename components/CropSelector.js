@@ -44,16 +44,16 @@ const CropSelector = (props) => {
                     style={{height: "20rem", width: "100%", marginBottom: "2rem", objectFit: "cover"}}
                     fluid={true}
                 />
-                <div className={"d-flex justify-content-center"}>
-                    <button onClick={() => {
+                <div className={"d-flex flex-row justify-content-evenly align-items-center mb-4 "}>
+                    <Button variant="dark" onClick={() => {
                         decrease()
                     }}>-
-                    </button>
+                    </Button>
                     <p>{amount} {crop.priceUnit}</p>
-                    <button onClick={() => {
+                    <Button variant="dark" onClick={() => {
                         increase()
                     }}>+
-                    </button>
+                    </Button>
                 </div>
                 <div className="d-grid">
                     <Button variant="primary" size="lg"
@@ -61,7 +61,7 @@ const CropSelector = (props) => {
                                 () => {
                                     const cartItem = createCartItem(amount, "kg", cost, crop.name)
                                     dispatch(addCartItem(cartItem))
-                                    props.onHide
+                                    props.onHide()
                                 }
                             }
                     >
