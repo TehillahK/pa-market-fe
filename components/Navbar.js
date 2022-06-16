@@ -87,6 +87,7 @@ export default function NavBar(props) {
     const userAddress = props.address;
     const {user, error, isLoading} = useUser();
     const isMobile = useMediaQuery({query: `(max-width: 760px)`})
+    const update = props.update;
     return (
         <nav className={"pa-nav-bar"}>
             <Container style={{textDecoration: "none", color: "black"}}
@@ -124,6 +125,9 @@ export default function NavBar(props) {
                                             padding: "0 60px 0 20px",
                                             fontSize: "18px"
                                         }}
+                                        onChange={
+                                            event => update(event.target.value)
+                                        }
                                     />
                                     <SortBtn style={{textDecoration: "none", color: "black"}}/>
                                 </> :
