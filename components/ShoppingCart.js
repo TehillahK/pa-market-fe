@@ -18,13 +18,13 @@ const ShoppingCart = (props) => {
     const farm = props.farm;
 
     const config = {
-        public_key: process.env["FLUTTER_WAVE_KEY"],
+        public_key: 'FLWPUBK_TEST-487b3d1a05cb4f50efea589657e344da-X',
         tx_ref: Date.now(),
         amount: totalCost,
         currency: 'ZMW',
         payment_options: 'card,mobilemoney,ussd',
         customer: {
-            email: user.email,
+            email: "useremail@gmail.com",
             phonenumber: '07064586146',
             name: 'joel ugwumadu',
         },

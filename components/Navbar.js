@@ -97,7 +97,7 @@ export default function NavBar(props) {
                             <div className={"d-flex flex-row align-items-center"}>
                                 <Link href={"/"}>Logo</Link>
                                 <span className={"d-none d-sm-block ms-3"}/>
-                                <div className={"d-none d-lg-block d-xl-none"}>
+                                <div className={"d-none d-xl-block"}>
                                     {user && <AddressSetter />}
                                 </div>
                             </div>
