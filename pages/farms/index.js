@@ -11,11 +11,12 @@ import {addFarms} from "../../redux/farms";
 import AdsCarousel from "../../components/AdsCarousel";
 import styles from "../../styles/Home.module.css";
 import {useMediaQuery} from "react-responsive";
+import CategoryList from "../../components/CategoryList";
 
 // Getting data from api ,dont forget to run the python api
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`http://127.0.0.1:5000/api/farms`);
+    const res = await fetch(`https://hammerhead-app-an67q.ondigitalocean.app/api/farms`);
     const ufarms = await res.json();
 
 
@@ -79,6 +80,9 @@ export default function Farms({ufarms}) {
                 <Container className={"d-flex flex-column justify-content-center flex-nowrap mx-auto "}>
                     <Row className={"mx-auto"} style={{width: "98%"}}>
                         <AdsCarousel className={"mx-auto"}/>
+                    </Row>
+                    <Row className={"bg-app"}>
+                        <CategoryList />
                     </Row>
                 </Container>
                 <span/>

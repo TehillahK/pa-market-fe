@@ -18,7 +18,7 @@ import {useMediaQuery} from "react-responsive";
 import ShoppingCartMobile from "../../components/ShoppingCartMobile";
 
 export const getStaticPaths = async () => {
-    const res = await fetch(`http://127.0.0.1:5000/api/farms`);
+    const res = await fetch(`https://hammerhead-app-an67q.ondigitalocean.app/api/farms`);
     const farms = await res.json();
     const paths = farms.map((farm) => {
         return {
@@ -33,7 +33,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const id = context.params.id;
-    const res = await fetch(`http://127.0.0.1:5000/api/farm?id=${id}`);
+    const res = await fetch(`https://hammerhead-app-an67q.ondigitalocean.app/api/farm?id=${id}`);
     const data = await res.json();
     // const resCrops = await fetch(`http://127.0.0.1:5000/api/crops?id=${id}`);
     //const dataCrops = await resCrops.json();
