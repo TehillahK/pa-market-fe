@@ -119,7 +119,7 @@ export default function Home() {
                                     objectFit={"cover"}
                                 />
                                 <h3>Become a Farm Partner</h3>
-                                <p style={{textAlign: "center", textJustify: "inter-word"}}>As a driver you'll Lorem
+                                <p style={{textAlign: "center", textJustify: "inter-word"}}>As a driver youll Lorem
                                     ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 <Link href={"/"}>Join</Link>
                             </div>
@@ -133,7 +133,7 @@ export default function Home() {
                                     objectFit={"contain"}
                                 />
                                 <h3>Get the app</h3>
-                                <p style={{textAlign: "center", textJustify: "inter-word"}}>As a driver you'll Lorem
+                                <p style={{textAlign: "center", textJustify: "inter-word"}}>As a driver youll Lorem
                                     ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 <Link href={"/"}>Download</Link>
                             </div>
@@ -194,7 +194,7 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Powered by{' '}
+                    Powered by
                     <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16}/>
           </span>
