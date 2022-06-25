@@ -105,7 +105,7 @@ export default function Home() {
                                     alt={""}
                                 />
                                 <h3>Become a Driver</h3>
-                                <p style={{textAlign: "center", textJustify: "inter-word"}}>As a driver you'll Lorem
+                                <p style={{textAlign: "center", textJustify: "inter-word"}}>As a driver youll Lorem
                                     ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                 <Link href={"/"}>Join</Link>
                             </div>
