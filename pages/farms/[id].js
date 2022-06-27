@@ -65,7 +65,7 @@ export default function Farms({farm, crops}) {
                 <meta name="description" content="Farm"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <NavBar/>
+            <NavBar showMid={true} />
             <FarmHeader name={farmName}/>
             <main className={""}>
                 <Container fluid>
@@ -87,7 +87,7 @@ export default function Farms({farm, crops}) {
                                         </Row>
                                     </Col>
                                     <Col className={"d-none d-sm-block"} xs lg="5">
-                                        <ShoppingCart farm={farm}/>
+                                        <ShoppingCart farm={farm} showFooter={true}/>
                                     </Col>
                                     <Col className={"d-block d-sm-none"} xs lg="5">
                                         {<ShoppingCartMobile/>}

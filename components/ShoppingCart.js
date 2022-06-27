@@ -16,25 +16,8 @@ const ShoppingCart = (props) => {
     const {cart, totalCost} = useSelector((state) => state.cart);
     const dispatch = useDispatch()
     const farm = props.farm;
+    const showFooter = props.showFooter;
 
-    const config = {
-        public_key: 'FLWPUBK_TEST-487b3d1a05cb4f50efea589657e344da-X',
-        tx_ref: Date.now(),
-        amount: totalCost,
-        currency: 'ZMW',
-        payment_options: 'card,mobilemoney,ussd',
-        customer: {
-            email: "useremail@gmail.com",
-            phonenumber: '07064586146',
-            name: 'joel ugwumadu',
-        },
-        customizations: {
-            title: 'my Payment Title',
-            description: 'Payment for items in cart',
-            logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
-        },
-    };
-    const handleFlutterPayment = useFlutterwave(config);
 
     return (
         <>
@@ -76,28 +59,27 @@ const ShoppingCart = (props) => {
                             );
                         })}
                     </ListGroup>
+                    {showFooter &&
+                        <div style={{marginTop: "1rem"}} className="d-grid">
+                            <Link
 
-                    <div style={{marginTop: "1rem"}} className="d-grid">
-                        <Link
+                                href={"/checkout"}
 
-                            href={"/checkout"}
+                            >
+                                <Button variant="primary" size={"lg"}>
+                                    Checkout
+                                </Button>
+                            </Link>
 
-                        >
-                            <Button variant="primary"  size={"lg"} >
-                                Checkout
-                            </Button>
-                        </Link>
-                        <div style={{marginTop: "1rem"}}>
-                            {totalCost > 0 && <p>Total K{totalCost}</p>}
-                            <div className={"d-flex align-items-baseline"}>
-                                <p>Discount code</p>
-                                <input style={{height: "1.5rem", width: "7rem"}}/>
-                                <button>get discount</button>
+                            <div style={{marginTop: "1rem"}}>
+                                {totalCost > 0 && <p>Total K{totalCost}</p>}
+
+                                <strong>Total does not include delivery fees.</strong>
+
                             </div>
-                            <strong>Total does not include delivery fees.</strong>
 
                         </div>
-                    </div>
+                    }
                 </Card.Body>
             </Card>
 

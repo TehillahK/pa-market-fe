@@ -12,6 +12,7 @@ export default async function handler(req, res) {
             "amount": "1",
             "currency": "ZMW",
             "email": "tehillahkangamba@gmail.com",
+            "network":"MTN",
             "phone_number": "0966780987",
             "fullname": "Tehillah Kangamba",
             "order_id": "URF_MMGH_1585323540079_5981535"

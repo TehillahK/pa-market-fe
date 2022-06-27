@@ -42,7 +42,7 @@ export default function Home() {
             </Head>
             <header className={styles.landingImage}>
 
-                <NavBar address={address}/>
+                <NavBar  showMid={false} address={address}/>
                 <Container className={" justify-content-center align-items-center text-center"}>
                     <Row  className={" justify-content-center align-items-center"}>
                         <Col className={"d-flex flex-column justify-content-center align-items-center"}>

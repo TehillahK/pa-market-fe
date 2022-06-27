@@ -55,7 +55,7 @@ export default function Farms({ufarms}) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <header className={"d-flex flex-column "} style={{backgroundColor: "white", height: "6rem"}}>
-                <NavBar update={(txt)=>setSearchTxt(txt)}  />
+                <NavBar  showMid={true} update={(txt)=>setSearchTxt(txt)}  />
                 <input
                     className={"d-block d-sm-none shadow rounded "}
                     placeholder={"Search Farm"}

@@ -88,6 +88,7 @@ export default function NavBar(props) {
     const {user, error, isLoading} = useUser();
     const isMobile = useMediaQuery({query: `(max-width: 760px)`})
     const update = props.update;
+    const showMid =props.showMid;
     return (
         <nav className={"pa-nav-bar"}>
             <Container style={{textDecoration: "none", color: "black"}}
@@ -99,7 +100,7 @@ export default function NavBar(props) {
                                 <Link href={"/"}>Logo</Link>
                                 <span className={"d-none d-sm-block ms-3"}/>
                                 <div className={"d-none d-xl-block"}>
-                                    {user && <AddressSetter/>}
+                                    {user &&showMid&& <AddressSetter/>}
                                 </div>
                             </div>
                         </Row>
@@ -111,7 +112,7 @@ export default function NavBar(props) {
 
                     <Col xs={2} lg={5} className={"d-none d-sm-block"}>
                         <div className={" d-flex flex-row justify-content-center align-items-center"}>
-                            {user ?
+                            {user&&showMid ?
                                 <>
                                     <input
                                         className={"shadow rounded"}
