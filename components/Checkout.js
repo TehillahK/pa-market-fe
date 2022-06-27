@@ -1,6 +1,9 @@
-import {Button, Card, ListGroup} from "react-bootstrap";
+import {Accordion, Button, Card, ListGroup} from "react-bootstrap";
 import {useState} from "react";
 import Image from "next/image";
+import ShoppingCart from "./ShoppingCart";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faMobilePhone, faPhone} from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -55,13 +58,18 @@ function CardPayment() {
 }
 
 function MobileMoney() {
-    const [inputs, setInputs] = useState({});
+    const [inputs, setInputs] = useState({
+        phoneNum:"",
+        network:""
+    });
 
     const handleChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}))
+        setInputs(
+            {...inputs, [event.target.name]: event.target.value}
+        )
+
     }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         alert(inputs);
@@ -87,7 +95,7 @@ function MobileMoney() {
                                height={20}
                                objectFit={"cover"}
                         />  Network
-                        <select value={inputs.network||""} name="network">
+                        <select  value={inputs.network} onChange={handleChange} name="network">
                             <option value="MTN">MTN</option>
                             <option value="Airtel">Airtel</option>
                             <option value="Zamtel">Zamtel</option>
@@ -99,8 +107,8 @@ function MobileMoney() {
                             type=""
                             style={textStyle}
                             ype="tel" id="phone"
-                            value={inputs.number || ""}
-                            name="phone"
+                            value={inputs.phoneNum}
+                            name="phoneNum"
                             pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                             maxLength={10}
                             placeholder={"09666666666"}
@@ -110,8 +118,22 @@ function MobileMoney() {
                     </label>
                 </div>
             </div>
+            <OrderDetails />
             <input style={{backgroundColor:"black",color:"white"}} type="submit" value={"Pay Now"}/>
         </form>
+    )
+}
+
+function OrderDetails() {
+    return(
+        <Accordion className={"mb-3"} >
+            <Accordion.Item eventKey="0">
+                <Accordion.Header>Order Details</Accordion.Header>
+                <Accordion.Body>
+                    <ShoppingCart showFooter={false} />
+                </Accordion.Body>
+            </Accordion.Item>
+        </Accordion>
     )
 }
 
@@ -143,6 +165,7 @@ const Checkout = () => {
                                     () => showCardPayment()
                                 }
                             >
+
                                 Debit/Credit Card
                             </a>
                             <a
@@ -155,11 +178,12 @@ const Checkout = () => {
                             </a>
 
                         </div>
-                        <div>
+                        <div className={"d-flex flex-column"}>
                             {cardPayment ? <CardPayment/> : <MobileMoney/>}
 
                         </div>
                     </div>
+
 
                 </Card.Body>
             </Card>

@@ -21,9 +21,6 @@ export default function CheckoutPage() {
                             <Col className={"mb-3"}>
                                 <CustomerDetails />
                             </Col>
-                            <Col>
-                                <ShoppingCart showFooter={false} />
-                            </Col>
                         </Col>
 
                         <Col>
