@@ -7,7 +7,6 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCoffee, faCircleInfo, faStar, faTruck, faTrash} from '@fortawesome/free-solid-svg-icons'
 import {removeCartItem, setFarmID, setFarmName} from "../redux/shoppingcart";
 import CropSelector from "./CropSelector";
-import {useFlutterwave, closePaymentModal} from 'flutterwave-react-v3';
 import {useUser} from "@auth0/nextjs-auth0";
 
 const ShoppingCart = (props) => {
