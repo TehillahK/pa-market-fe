@@ -7,7 +7,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCoffee, faCircleInfo, faStar, faTruck, faTrash} from '@fortawesome/free-solid-svg-icons'
 import {removeCartItem, setFarmID, setFarmName} from "../redux/shoppingcart";
 import CropSelector from "./CropSelector";
-import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
+import {useFlutterwave, closePaymentModal} from 'flutterwave-react-v3';
 import {useUser} from "@auth0/nextjs-auth0";
 
 const ShoppingCart = (props) => {
@@ -78,24 +78,20 @@ const ShoppingCart = (props) => {
                     </ListGroup>
 
                     <div style={{marginTop: "1rem"}} className="d-grid">
-                        <Button variant="primary" size="lg"
-                                onClick={() => {
-                                    handleFlutterPayment({
-                                        callback: (response) => {
-                                            console.log(response);
-                                            closePaymentModal() // this will close the modal programmatically
-                                        },
-                                        onClose: () => {},
-                                    });
-                                }}
+                        <Link
+
+                            href={"/checkout"}
+
                         >
-                            Checkout
-                        </Button>
+                            <Button variant="primary"  size={"lg"} >
+                                Checkout
+                            </Button>
+                        </Link>
                         <div style={{marginTop: "1rem"}}>
                             {totalCost > 0 && <p>Total K{totalCost}</p>}
                             <div className={"d-flex align-items-baseline"}>
                                 <p>Discount code</p>
-                                <input style={{height:"1.5rem",width:"7rem"}} />
+                                <input style={{height: "1.5rem", width: "7rem"}}/>
                                 <button>get discount</button>
                             </div>
                             <strong>Total does not include delivery fees.</strong>
