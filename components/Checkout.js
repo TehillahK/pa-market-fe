@@ -60,7 +60,7 @@ function CardPayment() {
 function MobileMoney() {
     const [inputs, setInputs] = useState({
         phoneNum:"",
-        network:""
+        network:"MTN"
     });
 
     const handleChange = (event) => {
@@ -70,9 +70,16 @@ function MobileMoney() {
 
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        alert(inputs);
+        let res = await fetch("/api/services/mobilemoney", {
+            method: "POST",
+            body: JSON.stringify({
+                network:inputs.network,
+                mobileNumber: inputs.phoneNum,
+            }),
+        });
+
     }
     const textStyle = { width: "100%",
         padding: "12px 20px",
@@ -109,7 +116,6 @@ function MobileMoney() {
                             ype="tel" id="phone"
                             value={inputs.phoneNum}
                             name="phoneNum"
-                            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                             maxLength={10}
                             placeholder={"09666666666"}
                             onChange={handleChange}
