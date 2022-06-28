@@ -28,5 +28,6 @@ module.exports = {
       loader: 'expose-loader',
       options: '$'
     }]
-  }]
+  }],
+  presets: ["next/babel"]
 };
