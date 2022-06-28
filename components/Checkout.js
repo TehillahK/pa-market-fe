@@ -62,6 +62,7 @@ function MobileMoney() {
         phoneNum:"",
         network:"MTN"
     });
+    const [purchaseLink,setPurchaseLink] = useState("")
 
     const handleChange = (event) => {
         setInputs(
@@ -72,13 +73,21 @@ function MobileMoney() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        let res = await fetch("/api/services/mobilemoney", {
+        const res = await fetch("/api/services/mobilemoney", {
             method: "POST",
             body: JSON.stringify({
                 network:inputs.network,
                 mobileNumber: inputs.phoneNum,
             }),
-        });
+        })
+
+        const data = await res.json()
+        let result = JSON.parse(data)
+        if (result.status==="success"){
+           // console.log(result.meta.authorization.redirect)
+            setPurchaseLink(result.meta.authorization.redirect)
+        }
+
 
     }
     const textStyle = { width: "100%",
@@ -123,6 +132,9 @@ function MobileMoney() {
                         />
                     </label>
                 </div>
+            </div>
+            <div>
+                <iframe src={purchaseLink} />
             </div>
             <OrderDetails />
             <input style={{backgroundColor:"black",color:"white"}} type="submit" value={"Pay Now"}/>
