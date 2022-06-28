@@ -56,7 +56,7 @@ const CropSelector = (props) => {
                     </Button>
                 </div>
                 <div className="d-grid">
-                    <Button variant="primary" size="lg"
+                    <Button  variant="dark" size="lg"
                             onClick={
                                 () => {
                                     const cartItem = createCartItem(amount, "kg", cost, crop.name)

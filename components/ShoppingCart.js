@@ -65,7 +65,7 @@ const ShoppingCart = (props) => {
                                 href={"/checkout"}
 
                             >
-                                <Button variant="primary" size={"lg"}>
+                                <Button  variant="dark" size={"lg"}>
                                     Checkout
                                 </Button>
                             </Link>
