@@ -18,7 +18,7 @@ const MobileCard = (props) => {
 
                 <Image
                     className={"justify-content-center"}
-                    src={"https://images.pexels.com/photos/162240/bull-calf-heifer-ko-162240.jpeg?cs=srgb&dl=pexels-pixabay-162240.jpg&fm=jpg"}
+                    src={farm.photoUrl}
                     alt={`${farm.name}`}
                     fluid={true}
                     // style={{width: "20rem", height: "8rem", objectFit: "cover", margin: "auto"}}
@@ -28,7 +28,7 @@ const MobileCard = (props) => {
                 />
                 <Image
                     className={"justify-content-center"}
-                    src={"https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/2__1_-removebg-preview.png?alt=media&token=9b4511a6-509a-4f64-a37a-bb1e860337b5"}
+                    src={farm.logoUrl}
                     alt={`${farm.name} logo`}
                     fluid={true}
                     //  style={{width: "10rem", height: "10rem", objectFit: "cover", margin: "auto"}}
