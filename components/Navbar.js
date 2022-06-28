@@ -98,7 +98,7 @@ export default function NavBar(props) {
                         <Row>
                             <div className={"d-flex flex-row align-items-center"}>
                                 <Link style={{textDecoration:"none"}} href={"/"}>
-                                    <a> Logo</a>
+                                    <a style={{textDecoration:"none",color:"black"}}> Logo</a>
 
                                 </Link>
                                 <span className={"d-none d-sm-block ms-3"}/>
@@ -162,8 +162,8 @@ export default function NavBar(props) {
                             }
                             {
                                 !user && (
-                                    <Link href={"/api/auth/login"}>
-                                       <a>Sign In</a>
+                                    <Link style={{textDecoration:"none",color:"black"}} href={"/api/auth/login"}>
+                                       <a style={{textDecoration:"none",color:"black"}}>Sign In</a>
                                     </Link>
                                 )
                             }
