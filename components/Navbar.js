@@ -97,7 +97,7 @@ export default function NavBar(props) {
                     <Col sm>
                         <Row>
                             <div className={"d-flex flex-row align-items-center"}>
-                                <Link href={"/"}>Logo</Link>
+                                <Link style={{textDecoration:"none"}} href={"/"}>Logo</Link>
                                 <span className={"d-none d-sm-block ms-3"}/>
                                 <div className={"d-none d-xl-block"}>
                                     {user &&showMid&& <AddressSetter/>}

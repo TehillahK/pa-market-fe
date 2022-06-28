@@ -155,7 +155,7 @@ export default function Home() {
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in metus quis nunc
                                     accumsan feugiat. Fusce quis tellus ultricies, suscipit urna vitae, imperdiet odio.
                                 </p>
-                                <ul>
+                                <ul style={{listStyle:"none"}}>
                                     <li>
                                         <Link href={"/"}>Business Analysts</Link>
                                     </li>
