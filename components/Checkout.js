@@ -94,6 +94,18 @@ function MobileMoney() {
 
     }
 
+    const networkImg = ()=>{
+        if (inputs.network==="MTN"){
+            return "https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/MTN-Zambia.png?alt=media&token=a8940938-3c61-4f85-94f0-731a52f877a6"
+        }
+        else if(inputs.network==="Airtel"){
+            return "https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/Il0mBDbr_400x400.png?alt=media&token=5cd16ebf-be01-4bdf-85af-33de125575b2"
+        }
+        else if(inputs.network ==="Zamtel"){
+            return "https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/1835415.png?alt=media&token=e6ae1da8-d4df-41d9-a975-0c06abeddb13"
+        }
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const res = await fetch("/api/services/mobilemoney", {
@@ -133,8 +145,8 @@ function MobileMoney() {
 
                         <label className={"d-flex justify-content-center  mb-3"}>
                             <Image
-                                src={"https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/MTN-Zambia.png?alt=media&token=a8940938-3c61-4f85-94f0-731a52f877a6"}
-                                width={20}
+                                src={networkImg()}
+                                width={23}
                                 height={20}
                                 objectFit={"cover"}
                             /> Network
