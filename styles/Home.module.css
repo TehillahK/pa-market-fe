@@ -118,7 +118,9 @@
   align-items: center;
 
 }
-
+.order-details{
+  border-style: none;
+}
 .card-mobile{
   display: none;
 }

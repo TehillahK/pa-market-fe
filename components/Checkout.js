@@ -1,4 +1,5 @@
 import {Accordion, Button, Card, ListGroup, Modal} from "react-bootstrap";
+import styles from '../styles/Home.module.css'
 import {useState} from "react";
 import Image from "next/image";
 import ShoppingCart from "./ShoppingCart";
@@ -20,7 +21,7 @@ function VerificationModal(props) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <iframe  style={{height:"100%",width:"100%",overflow:"hidden"}} src={link} scrolling="no"/>
+                <iframe style={{height: "100%", width: "100%", overflow: "hidden"}} src={link} scrolling="no"/>
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>
@@ -42,40 +43,95 @@ function CardPayment() {
         event.preventDefault();
         alert(inputs);
     }
+    const textStyle = {
+        width: "100%",
+        padding: "12px 20px",
+        margin: "8px 0",
+        display: "inline-block",
+        border: "1px solid #ccc",
+        borderRadius: "4px",
+        boxSizing: "border-box",
+        zIndex: "1000"
+    }
+
+    const textDateStyle ={
+        width: "4rem",
+        padding: "12px 20px",
+        margin: "8px 0",
+        display: "inline-block",
+        border: "1px solid #ccc",
+        borderRadius: "4px",
+        boxSizing: "border-box",
+        zIndex: "1000",
+        marginRight:"1rem"
+    }
 
     return (
-        <form className={"d-flex flex-column justify-content-evenly align-content-between"} onSubmit={handleSubmit}>
-            <div className={"d-flex flex-row"} style={{marginBottom: "1rem"}}>
-
-                <input
-                    type="text"
-                    style={{width: "100%"}}
-                    value={inputs.username || ""}
-                    name="cardnumber"
-
-
-                    maxLength="19"
-                    placeholder="1111-2222-3333-4444"
-                    onChange={handleChange}
-                />
-
-            </div>
+        <form className={"d-flex flex-column justify-content-center align-content-between"} onSubmit={handleSubmit}>
             <div className={"d-flex flex-row"} style={{marginBottom: "1rem"}}>
                 <label>
+                    Card Number
+                    <input
+                        type="tel"
+                        style={textStyle}
+                        value={inputs.username || ""}
+                        name="cardnumber"
+                        maxLength="19"
+                        placeholder="4111111111111111"
+                        onChange={handleChange}
+                    />
+                </label>
+
+            </div>
+            <div className={"d-flex flex-row"} style={{marginBottom: "1rem",width:"5rem"}}>
+                <label>
+                    CVC
                     <input
                         type="text"
-                        style={{width: "100%"}}
+                        style={textStyle}
 
-                        name="cardnumber"
+                        name="cvc"
 
+                        placeholder="123"
+                        maxLength="4"
 
-                        maxLength="19"
-                        placeholder="1111-2222-3333-4444"
                         onChange={handleChange}
                     />
                 </label>
             </div>
-            <input type="submit"/>
+            <div className={"d-flex flex-row justify-content-center align-items-center"} style={{marginBottom: "1rem",width:"10rem"}}>
+                <label>
+                    MM
+                    <input
+                        type="text"
+                        style={textDateStyle}
+
+                        name="month"
+
+                        placeholder="08"
+                        maxLength="2"
+
+                        onChange={handleChange}
+                    />
+                </label>
+
+                <label >
+                    YY
+                    <input
+                        type="text"
+                        style={textDateStyle}
+
+                        name="year"
+
+                        placeholder="22"
+                        maxLength="2"
+
+                        onChange={handleChange}
+                    />
+                </label>
+            </div>
+            <OrderDetails className={styles.orderDetails} />
+            <input  style={{backgroundColor: "black", color: "white"}} type="submit" value={"Pay Now"} />
         </form>
     )
 }
@@ -94,14 +150,12 @@ function MobileMoney() {
 
     }
 
-    const networkImg = ()=>{
-        if (inputs.network==="MTN"){
+    const networkImg = () => {
+        if (inputs.network === "MTN") {
             return "https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/MTN-Zambia.png?alt=media&token=a8940938-3c61-4f85-94f0-731a52f877a6"
-        }
-        else if(inputs.network==="Airtel"){
+        } else if (inputs.network === "Airtel") {
             return "https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/Il0mBDbr_400x400.png?alt=media&token=5cd16ebf-be01-4bdf-85af-33de125575b2"
-        }
-        else if(inputs.network ==="Zamtel"){
+        } else if (inputs.network === "Zamtel") {
             return "https://firebasestorage.googleapis.com/v0/b/pamarket-63297.appspot.com/o/1835415.png?alt=media&token=e6ae1da8-d4df-41d9-a975-0c06abeddb13"
         }
     }
@@ -146,9 +200,9 @@ function MobileMoney() {
                         <label className={"d-flex justify-content-center  mb-3"}>
                             <Image
                                 src={networkImg()}
-                                width={23}
-                                height={20}
-                                objectFit={"cover"}
+                                width={25}
+                                height={25}
+                                objectFit={"scale-down"}
                             /> Network
                             <select value={inputs.network} onChange={handleChange} name="network">
                                 <option value="MTN">MTN</option>
@@ -172,12 +226,12 @@ function MobileMoney() {
                         </label>
                     </div>
                 </div>
-                <OrderDetails/>
+                <OrderDetails />
                 <input style={{backgroundColor: "black", color: "white"}} type="submit" value={"Pay Now"}/>
             </form>
-            <VerificationModal  link={purchaseLink}
-                                show={modalShow}
-                                onHide={() => setModalShow(false)}
+            <VerificationModal link={purchaseLink}
+                               show={modalShow}
+                               onHide={() => setModalShow(false)}
 
             />
         </>
