@@ -54,10 +54,10 @@ const MobileCard = (props) => {
 const DesktopCard = (props) => {
     const farm = props.farm;
     return (
-        <Link  className={"mx-auto d-none "} href={"/"}>
+        <Link style={{textDecoration:"none"}}  className={"mx-auto d-none "} href={"/"}>
             <Card style={{width: "100%"}}>
                 <Card.Img variant="top"
-                          src="https://images.pexels.com/photos/162240/bull-calf-heifer-ko-162240.jpeg?cs=srgb&dl=pexels-pixabay-162240.jpg&fm=jpg"/>
+                          src={farm.photoUrl} />
                 <Card.Body>
                     <div className={"d-flex flex-row  align-items-center "}>
                         <Card.Title>{farm.name}</Card.Title>
