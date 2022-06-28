@@ -81,9 +81,6 @@ export default function Farms({ufarms}) {
                     <Row className={"mx-auto"} style={{width: "98%"}}>
                         <AdsCarousel className={"mx-auto"}/>
                     </Row>
-                    <Row className={"bg-app"}>
-                        <CategoryList />
-                    </Row>
                 </Container>
                 <span/>
                 <Container className={"justify-content-center"}>

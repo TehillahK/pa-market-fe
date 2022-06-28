@@ -9,15 +9,21 @@ import coverImg from "../public/cover-img.jpg"
 import Link from "next/link";
 import { useRouter } from 'next/router'
 import {useUser} from "@auth0/nextjs-auth0";
+import {useEffect} from "react";
 
 export default function Home() {
     const {address} = useSelector((state) => state.user)
     const {user, error, isLoading} = useUser();
     const router = useRouter()
-    const goToFarms =()=> router.push('/farms');
-    if (user){
-        goToFarms()
-    }
+
+    useEffect(
+        ()=>{
+            if (user){
+                router.push('/farms').then(r => console.log(r));
+            }
+
+        },[]
+    )
     const sectionStyle = {
         backgroundImage: `url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80")`,
         width: "100%",
