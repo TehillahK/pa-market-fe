@@ -15,7 +15,7 @@ const CropCard = (props) => {
             <a
 
                 className={"d-flex flex-row justify-content-between shadow mb-5 bg-body rounded mx-auto"}
-                style={{height: "10rem",width: "100%",textDecoration:"none"}}
+                style={{height: "10rem",width: "100%",textDecoration:"none",color:"black"}}
                 onClick={
                     () => {
                         setCropShow(true)
