@@ -48,7 +48,7 @@ const FarmHeader =(props)=>{
                 <h1 className={"farm-title"} >{farmName}</h1>
                 <a href={"#"}
                     className={"farm-info"}
-                    style={{fontSize:"1rem",marginLeft:"1rem"}}
+                    style={{fontSize:"1rem",marginLeft:"1rem",textDecoration:"none"}}
                     onClick={() => setModalShow(true)}
                 >more info <FontAwesomeIcon icon={faCircleInfo} />
                 </a>
