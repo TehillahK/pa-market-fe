@@ -40,6 +40,7 @@ export const getStaticProps = async (context) => {
     //const dataCr
     return {
         props: {farm: data},
+        revalidate: 60,
     };
 };
 
