@@ -10,32 +10,59 @@ import Link from "next/link";
 import { useRouter } from 'next/router'
 import {useUser} from "@auth0/nextjs-auth0";
 import {useEffect} from "react";
+import axios from "axios";
 
 export default function Home() {
     const {address} = useSelector((state) => state.user)
     const {user, error, isLoading} = useUser();
     const router = useRouter()
+    const getUser = (email) => {
+        let result
+        fetch("https://hammerhead-app-an67q.ondigitalocean.app/api/users", {
+            method: "POST",
+            mode: 'no-cors',
+            body: email
+        }).then(async function (response) {
+                result = await response
+                console.log(result)
+        })
 
+    }
     useEffect(
-        ()=>{
-            console.log("mounted")
-            if (user){
-              //  router.push('/farms').then(r => console.log(r));
-                const email= {email:user.email}
-               fetch("/api/user", {
-                       method: "POST",
-                       headers: {
-                           'Content-Type': 'application/json'
-                           // 'Content-Type': 'application/x-www-form-urlencoded',
-                       },
-                        body:JSON.stringify(email)
-                   }
-                ).then(response =>console.log(response))
+         a=> {
+             console.log("mounted")
+             let result
+             const getUser = async (email) => {
+                 const res = await axios.post('api/user', email, {
+                     headers: {
+                         // Overwrite Axios's automatically set Content-Type
+                         'Content-Type': 'application/json'
+                     }
+                 })
+                 const userData = res.data
+                 console.log(userData)
+                 return userData
 
-            }
+             }
+             if (user) {
+                 //  router.push('/farms').then(r => console.log(r));
+                 const email = JSON.stringify({email: user.email})
+                 console.log(email);
+                 getUser(email).then(r => {
+                     console.log(r)
+                     if(r.message==="success"){
+                         console.log("move to next page")
+                         console.log(r)
+                         router.push('/farms');
+                     }else{
+                         router.push('/signup');
+                     }
+                 })
+
+             }
 
 
-        },[]
+         },
     )
     const sectionStyle = {
         backgroundImage: `url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80")`,

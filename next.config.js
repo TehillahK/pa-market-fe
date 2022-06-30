@@ -29,5 +29,6 @@ module.exports = {
       options: '$'
     }]
   }],
-  presets: ["next/babel"]
+  presets: ["next/babel"],
+
 };
