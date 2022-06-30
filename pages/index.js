@@ -18,9 +18,27 @@ export default function Home() {
 
     useEffect(
         ()=>{
+            console.log("mounted")
             if (user){
-                router.push('/farms').then(r => console.log(r));
+              //  router.push('/farms').then(r => console.log(r));
+                const email= user.email
+                console.log(email)
+                fetch("/api/user", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        email: email
+                    }),
+                }).then(function (response) {
+                    if(response.status===200){
+                        console.log("user exists")
+                        router.push('/farms').then(r => console.log(r));
+                    }
+                    router.push('/signup').then(r => console.log(r));
+
+
+                })
             }
+
 
         },[]
     )
@@ -33,7 +51,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>PaMarket Farms</title>
+                <title>PaMarket Delivery</title>
                 <meta name="description" content="Pa Market is a hub for "/>
                 <link rel="icon" href="/favicon.ico"/>
                 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"

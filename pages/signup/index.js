@@ -13,15 +13,7 @@ import styles from "../../styles/Home.module.css";
 import {useMediaQuery} from "react-responsive";
 
 // Getting data from api ,dont forget to run the python api
-export async function getServerSideProps() {
-    // Fetch data from external API
-    const res = await fetch(`http://127.0.0.1:5000/api/farms`);
-    const ufarms = await res.json();
 
-
-    // Pass data to the page via props
-    return {props: {ufarms}};
-}
 
 export default function Farms({ufarms}) {
     // Getting stuff from redux

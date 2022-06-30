@@ -12,6 +12,7 @@ import AdsCarousel from "../../components/AdsCarousel";
 import styles from "../../styles/Home.module.css";
 import {useMediaQuery} from "react-responsive";
 import CategoryList from "../../components/CategoryList";
+import {useUser} from "@auth0/nextjs-auth0";
 
 // Getting data from api ,dont forget to run the python api
 export async function getServerSideProps() {
@@ -26,22 +27,24 @@ export async function getServerSideProps() {
 
 
 export default function Farms({ufarms}) {
+    const {user, error, isLoading} = useUser();
+
+
     // Getting stuff from redux
-    const [searchTxt, setSearchTxt ]= useState("")
+    const [searchTxt, setSearchTxt] = useState("")
     const {address} = useSelector((state) => state.user);
     const dispatch = useDispatch()
     dispatch(addFarms(ufarms))
     const {farms} = useSelector((state) => state.farms);
 
     const isMobile = useMediaQuery({query: `(max-width: 800px)`})
-    const findFarms = ( farms,name) => {
+    const findFarms = (farms, name) => {
 
         return farms.filter(
             (farm) => {
-                if(name===""){
+                if (name === "") {
                     return farm
-                }
-                else if (farm.name.toLowerCase().includes(name.toLowerCase())) {
+                } else if (farm.name.toLowerCase().includes(name.toLowerCase())) {
                     return farm;
                 }
             }
@@ -55,7 +58,7 @@ export default function Farms({ufarms}) {
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <header className={"d-flex flex-column "} style={{backgroundColor: "white", height: "6rem"}}>
-                <NavBar  showMid={true} update={(txt)=>setSearchTxt(txt)}  />
+                <NavBar showMid={true} update={(txt) => setSearchTxt(txt)}/>
                 <input
                     className={"d-block d-sm-none shadow rounded "}
                     placeholder={"Search Farm"}
@@ -86,7 +89,7 @@ export default function Farms({ufarms}) {
                 <Container className={"justify-content-center"}>
                     <h2 style={{marginTop: "1rem"}}>Farms near you</h2>
                     <Row lg={1} className="mx-auto justify-content-center ">
-                        {findFarms(farms,searchTxt).map((farm) => {
+                        {findFarms(farms, searchTxt).map((farm) => {
                             return (
                                 <Col md={"auto"} key={farm._id.$oid} className={"mx-auto mb-2"}>
                                     <FarmCard farm={farm}/>

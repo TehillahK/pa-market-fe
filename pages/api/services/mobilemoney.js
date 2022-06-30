@@ -36,7 +36,7 @@ export default async function handler(req, res) {
 
     }
     console.log(result)
-    res.status(200).json(result)
+    res.status(statusCode).json(result)
   //  res.status(statusCode).json(result)
 
 }
