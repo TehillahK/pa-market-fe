@@ -18,26 +18,21 @@ import {useMediaQuery} from "react-responsive";
 export default function Farms({ufarms}) {
     // Getting stuff from redux
 
-    const {address} = useSelector((state) => state.user);
-    const dispatch = useDispatch()
-    dispatch(addFarms(ufarms))
-    const {farms} = useSelector((state) => state.farms);
-    console.log(address);
-    const isMobile = useMediaQuery({query: `(max-width: 800px)`})
+
     return (
         <div>
             <Head>
-                <title>Farms</title>
+                <title>Finish sign up</title>
                 <meta name="description" content="Farm"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
             <header className={"d-flex flex-column"} style={{backgroundColor: "white",height:"6rem"}}>
                 <NavBar/>
             </header>
-            <main className={"bg-app"}>
-                <h1>Sign up</h1>
+            <main>
+                <div className={"d-flex justify-content-center"}>
 
-
+                </div>
             </main>
         </div>
     );
