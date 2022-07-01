@@ -105,7 +105,7 @@ export default function Home() {
                     <Row sm={2} className={"align-items-center"}>
                         <Col lg={5}>
                             <Image
-                                src={"https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=791&q=80"}
+                                src={"https://images.pexels.com/photos/3213283/pexels-photo-3213283.jpeg"}
                                 height={400} width={500} objectFit={"cover"}
                                 alt={""}
                             />
