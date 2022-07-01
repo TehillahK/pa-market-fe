@@ -213,9 +213,9 @@ function MobileMoney() {
                         </label>
                         <label>
                             <input
-                                type=""
+
                                 style={textStyle}
-                                ype="tel" id="phone"
+                                type="tel" id="phone"
                                 value={inputs.phoneNum}
                                 name="phoneNum"
                                 maxLength={10}
@@ -227,7 +227,7 @@ function MobileMoney() {
                     </div>
                 </div>
                 <OrderDetails />
-                <input style={{backgroundColor: "black", color: "white"}} type="submit" value={"Pay Now"}/>
+                <input style={{backgroundColor: "black", color: "white"}} type="submit" value={"Pay Now"} />
             </form>
             <VerificationModal link={purchaseLink}
                                show={modalShow}

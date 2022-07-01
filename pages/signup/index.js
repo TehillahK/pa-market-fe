@@ -11,29 +11,34 @@ import {addFarms} from "../../redux/farms";
 import AdsCarousel from "../../components/AdsCarousel";
 import styles from "../../styles/Home.module.css";
 import {useMediaQuery} from "react-responsive";
+import RegisterUser from "../../components/RegisterUser";
 
 // Getting data from api ,dont forget to run the python api
 
 
-export default function Farms({ufarms}) {
+export default function Signup() {
     // Getting stuff from redux
-
+    const bg = "/sign-bg.jpg"
 
     return (
-        <div>
+        <>
             <Head>
                 <title>Finish sign up</title>
                 <meta name="description" content="Farm"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
-            <header className={"d-flex flex-column"} style={{backgroundColor: "white",height:"6rem"}}>
-                <NavBar/>
+            <header className={"d-flex flex-column "} style={{backgroundColor: "white",height:"5rem"}}>
+                <NavBar />
             </header>
-            <main>
-                <div className={"d-flex justify-content-center"}>
-
+            <main className={"d-flex justify-content-lg-center  align-items-center  mt-2"} style={{backgroundImage:`url(${bg})`,backgroundRepeat:"no-repeat",height:"100vh",backgroundSize:"100% auto"}}>
+                <span style={{marginBottom:"5rem"}}  />
+                <div style={{backgroundColor:"white",position:"relative",top:"5px",borderRadius:"1rem",marginLeft:"5rem"}} className={"d-flex flex-column  align-items-center mb-3 p-3"}>
+                        <h1 className={"mb-3"}>Primary Address</h1>
+                        <p>This is the address your goods will be dropped off</p>
+                        <RegisterUser />
                 </div>
+                <span style={{marginBottom:"5rem"}}  />
             </main>
-        </div>
+        </>
     );
 }
