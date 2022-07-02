@@ -197,7 +197,7 @@ function MobileMoney() {
                 <div className={"d-flex flex-row justify-content-center"} style={{marginBottom: "1rem"}}>
                     <div className={"d-flex flex-column justify-content-between align-items-center"}>
 
-                        <label className={"d-flex justify-content-center  mb-3"}>
+                        <label className={"d-flex justify-content-center mt-3  mb-3"}>
                             <Image
                                 src={networkImg()}
                                 width={25}
@@ -266,7 +266,7 @@ const Checkout = () => {
     return (
 
         <div>
-            <Card style={{width: "30rem"}}>
+            <Card style={{width: "22rem"}}>
                 <Card.Body>
                     <Card.Title>Checkout</Card.Title>
 

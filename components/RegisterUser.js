@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 
-const RegisterUser = () => {
+const RegisterUser = (props) => {
     const [inputs, setInputs] = useState({
         phoneNum: "",
         houseNum: "",
@@ -21,14 +21,37 @@ const RegisterUser = () => {
         boxSizing: "border-box",
         zIndex: "1000"
     }
+
+    const email = props.email;
+    const getUser = (email) => {
+        let result
+        fetch("https://hammerhead-app-an67q.ondigitalocean.app/api/users", {
+            method: "POST",
+            mode: 'no-cors',
+            body: email
+        }).then(async function (response) {
+            result = await response
+            console.log(result)
+        })
+
+    }
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const res = await fetch("/api/services/mobilemoney", {
+        const res = await fetch("https://hammerhead-app-an67q.ondigitalocean.app/api/users", {
             method: "POST",
+            mode: 'no-cors',
             body: JSON.stringify({
-                network: inputs.network,
-                mobileNumber: inputs.phoneNum,
+                email:email,
+                streetName: inputs.streetName,
+                area:inputs.area,
+                city: inputs.city,
+                province: inputs.province,
+                coordinates: [0,0],
+
             }),
+        }).then(async function (response) {
+            const result = await response
+            console.log(result)
         })
     }
 
@@ -41,7 +64,7 @@ const RegisterUser = () => {
 
 
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label>
                     House Number
