@@ -63,7 +63,7 @@ const RegisterUser = (props) => {
             console.log(result)
         })
        // const res = await axios.post('https://hammerhead-app-an67q.ondigitalocean.app/api/users', formData);
-       router.push("/farms")
+       router.push("/")
     }
 
     const handleChange = (event) => {
