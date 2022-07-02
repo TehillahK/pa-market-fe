@@ -3,9 +3,7 @@ import Image from 'next/image'
 import NavBar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
 import {useDispatch, useSelector} from "react-redux";
-
 import {Col, Container, Row} from "react-bootstrap";
-import coverImg from "../public/cover-img.jpg"
 import Link from "next/link";
 import {useRouter} from 'next/router'
 import {useUser} from "@auth0/nextjs-auth0";

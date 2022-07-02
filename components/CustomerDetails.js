@@ -23,7 +23,7 @@ const CustomerDetails = (props) => {
             <ListGroup.Item>
                 <div className={"d-flex flex-row justify-content-between align-items-center"}>
                     <p>Address</p>
-                    <p>{user.houseNum} , {userAddress.streetName}, {userAddress.city}</p>
+                    <p>{userAddress.houseNum} , {userAddress.streetName}, {userAddress.city}</p>
                 </div>
             </ListGroup.Item>
             <ListGroup.Item>
