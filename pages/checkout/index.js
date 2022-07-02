@@ -11,18 +11,10 @@ import {useEffect, useState} from "react";
 import {useRouter} from 'next/router'
 
 export default function CheckoutPage() {
-    const {user, error, isLoading} = useUser();
+
     const router = useRouter()
-    const [name,setName] = useState("")
-    useEffect(
-        ()=>{
-            if(!user){
-                router.push('/')
-            }else {
-                setName(user.name)
-            }
-        },[]
-    )
+
+
     return (
         <>
             <Head>
@@ -35,7 +27,7 @@ export default function CheckoutPage() {
                     <Row>
                         <Col>
                             <Col className={"mb-3"}>
-                                <CustomerDetails name={name}/>
+                                <CustomerDetails />
                             </Col>
                         </Col>
 

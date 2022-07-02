@@ -266,7 +266,7 @@ const Checkout = () => {
     return (
 
         <div>
-            <Card style={{width: "22rem"}}>
+            <Card style={{width:"100%"}}>
                 <Card.Body>
                     <Card.Title>Checkout</Card.Title>
 

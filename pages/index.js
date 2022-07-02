@@ -11,7 +11,7 @@ import {useRouter} from 'next/router'
 import {useUser} from "@auth0/nextjs-auth0";
 import {useEffect} from "react";
 import axios from "axios";
-import {addUser} from "../redux/user"
+import {addUser, saveName} from "../redux/user"
 
 export default function Home() {
     const {address} = useSelector((state) => state.user)
@@ -46,12 +46,14 @@ export default function Home() {
                 const userData = res.data
                 console.log(userData)
                 dispatch(addUser(userData))
+
                 return userData
 
             }
             if (user) {
                 //  router.push('/farms').then(r => console.log(r));
                 const email = JSON.stringify({email: user.email})
+                dispatch(saveName(user.name))
                 console.log(email);
                 getUser(email).then(r => {
                     result = r

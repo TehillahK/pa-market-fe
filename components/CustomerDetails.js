@@ -3,16 +3,15 @@ import {useSelector} from "react-redux";
 import {useUser} from "@auth0/nextjs-auth0";
 
 const CustomerDetails = (props) => {
-    const {user} = useSelector((state) => state.user);
+    const {user,name} = useSelector((state) => state.user);
     const {cart, totalCost} = useSelector((state) => state.cart);
-    const userName = props.name;
     const userAddress = user.address[0];
     return (
         <ListGroup>
             <ListGroup.Item>
                 <div className={"d-flex flex-row justify-content-between align-items-center"}>
                     <p>Name</p>
-                    <p>{userName}</p>
+                    <p>{name}</p>
                 </div>
             </ListGroup.Item>
             <ListGroup.Item>

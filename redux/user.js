@@ -5,18 +5,22 @@ export const userSlice = createSlice({
     initialState: {
       user:{
 
-      }
+      },
+      name:""
     },
     reducers: {
 
       addUser:(state,action)=>{
           state.user = action.payload
+      },
+      saveName:(state,action)=>{
+          state.name = action.payload
       }
 
     }
   });
 
   // Action creators are generated for each case reducer function
-  export const { addUser } = userSlice.actions;
+  export const { addUser ,saveName} = userSlice.actions;
 
   export default userSlice.reducer;
