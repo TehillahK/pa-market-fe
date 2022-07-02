@@ -3,24 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
     name: "user",
     initialState: {
-      firstName:"Tehillah",
-      lastName:"Kangamba",
-      email:"tehillahkangamba@gmail.com",
-      phoneNumber:"",
-      addresses:[
+      user:{
 
-      ]
+      }
     },
     reducers: {
 
-      changeAddress:(state,action)=>{
-        state.address = action.payload
+      addUser:(state,action)=>{
+          state.user = action.payload
       }
 
     }
   });
 
   // Action creators are generated for each case reducer function
-  export const { changeAddress } = userSlice.actions;
+  export const { addUser } = userSlice.actions;
 
   export default userSlice.reducer;

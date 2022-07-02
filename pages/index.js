@@ -3,7 +3,7 @@ import Image from 'next/image'
 import NavBar from '../components/Navbar'
 import styles from '../styles/Home.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import {changeAddress} from "../redux/user";
+
 import {Col, Container, Row} from "react-bootstrap";
 import coverImg from "../public/cover-img.jpg"
 import Link from "next/link";
@@ -11,10 +11,11 @@ import { useRouter } from 'next/router'
 import {useUser} from "@auth0/nextjs-auth0";
 import {useEffect} from "react";
 import axios from "axios";
-
+import {addUser} from "../redux/user"
 export default function Home() {
     const {address} = useSelector((state) => state.user)
     const {user, error, isLoading} = useUser();
+    const dispatch = useDispatch()
     const router = useRouter()
     const getUser = (email) => {
         let result
@@ -41,6 +42,7 @@ export default function Home() {
                  })
                  const userData = res.data
                  console.log(userData)
+                 dispatch(addUser(userData))
                  return userData
 
              }
