@@ -54,7 +54,7 @@ const MobileCard = (props) => {
 const DesktopCard = (props) => {
     const farm = props.farm;
     return (
-        <Link style={{textDecoration:"none"}}  className={"mx-auto d-none "} href={"/"}>
+        <Link style={{textDecoration:"none"}}  className={"mx-auto d-none "} href={`/farms/${farm._id.$oid}`}>
             <Card style={{width: "100%"}}>
                 <Card.Img variant="top"
                           src={farm.photoUrl} />
