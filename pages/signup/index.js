@@ -13,7 +13,7 @@ import styles from "../../styles/Home.module.css";
 import {useMediaQuery} from "react-responsive";
 import RegisterUser from "../../components/RegisterUser";
 import {useUser} from "@auth0/nextjs-auth0";
-
+import {useRouter} from 'next/router'
 // Getting data from api ,dont forget to run the python api
 
 
@@ -21,6 +21,7 @@ export default function Signup() {
     // Getting stuff from redux
     const bg = "/sign-bg.jpg"
     const {user, error, isLoading} = useUser();
+
     return (
         <>
             <Head>

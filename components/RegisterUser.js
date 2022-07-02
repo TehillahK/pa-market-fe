@@ -1,7 +1,8 @@
 import {useState} from "react";
 
-
+import {useRouter} from 'next/router'
 const RegisterUser = (props) => {
+    const router = useRouter()
     const [inputs, setInputs] = useState({
         phoneNum: "",
         houseNum: "",
@@ -37,26 +38,32 @@ const RegisterUser = (props) => {
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const formData = {
+            email:email,
+            houseNum:inputs.houseNum,
+            streetName: inputs.streetName,
+            area:inputs.area,
+            city: inputs.city,
+            province: inputs.province,
+            coordinates: [0,0],
+
+        }
+        console.log(formData)
         const res = await fetch("https://hammerhead-app-an67q.ondigitalocean.app/api/users", {
             method: "POST",
             mode: 'no-cors',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
                 // 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: JSON.stringify({
-                email:email,
-                streetName: inputs.streetName,
-                area:inputs.area,
-                city: inputs.city,
-                province: inputs.province,
-                coordinates: [0,0],
-
-            }),
+            body: JSON.stringify(formData),
         }).then(async function (response) {
             const result = await response
             console.log(result)
         })
+       // const res = await axios.post('https://hammerhead-app-an67q.ondigitalocean.app/api/users', formData);
+       router.push("/farms")
     }
 
     const handleChange = (event) => {
