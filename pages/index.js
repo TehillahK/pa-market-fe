@@ -31,7 +31,9 @@ export default function Home() {
 
     }
     useEffect(
+
         a => {
+
             console.log("mounted")
             let result
             const getUser = async (email) => {
@@ -52,7 +54,7 @@ export default function Home() {
                 const email = JSON.stringify({email: user.email})
                 console.log(email);
                 getUser(email).then(r => {
-                    console.log(r)
+                    result = r
                     if (r.message === "success") {
                         console.log("move to next page")
                         console.log(r)
@@ -65,7 +67,7 @@ export default function Home() {
             }
 
 
-        },
+        },[user]
     )
     const sectionStyle = {
         backgroundImage: `url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80")`,
