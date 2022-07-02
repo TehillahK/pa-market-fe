@@ -18,6 +18,10 @@ const rootReducer = combineReducers({
     crops: cropsReducer,
     cart: shoppingCartReducer
 })
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 export default configureStore({
-    reducer: rootReducer
+    reducer: persistedReducer,
+    devTools: process.env.NODE_ENV !== 'production',
+    middleware: [thunk]
   });

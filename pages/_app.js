@@ -12,14 +12,18 @@ import Head from "next/head";
 import React from 'react';
 import {UserProvider} from '@auth0/nextjs-auth0';
 import {SSRProvider} from "react-bootstrap";
-
+import {PersistGate} from "redux-persist/integration/react";
+import { persistStore } from "redux-persist"
 config.autoAddCss = false
 
 function MyApp({Component, pageProps}) {
+    const persist = persistStore(store);
+
     return (
         <SSRProvider>
             <UserProvider>
                 <Provider store={store}>
+                    <PersistGate loading={null} persistor={persist}>
                     <Head>
                         {/* This ways to add css on global website use css @import property and you also paste Link tag also */}
                         <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -34,6 +38,7 @@ function MyApp({Component, pageProps}) {
                         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                     </Head>
                     <Component {...pageProps} />
+                    </PersistGate>
                 </Provider>
             </UserProvider>
         </SSRProvider>

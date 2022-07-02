@@ -4,9 +4,25 @@ import Checkout from "../../components/Checkout";
 import {Col, Container, Row} from "react-bootstrap";
 import CustomerDetails from "../../components/CustomerDetails";
 import ShoppingCart from "../../components/ShoppingCart";
+import {useUser} from "@auth0/nextjs-auth0";
+
+import axios from "axios";
+import {addUser} from "../../redux/user";
+import {router} from "next/client";
+import {useEffect} from "react";
 
 
 export default function CheckoutPage() {
+    const {user, error, isLoading} = useUser();
+    console.log(user)
+    useEffect(
+
+        ()=>{
+            if(!user){
+                router.push('/');
+            }
+        },[]
+    )
     return (
         <>
             <Head>
@@ -19,13 +35,13 @@ export default function CheckoutPage() {
                     <Row>
                         <Col>
                             <Col className={"mb-3"}>
-                                <CustomerDetails />
+                                <CustomerDetails name={user.name}/>
                             </Col>
                         </Col>
 
                         <Col>
                             <div className={"d-flex flex-row justify-content-end"}>
-                                <Checkout />
+                                <Checkout  />
                             </div>
                         </Col>
                     </Row>

@@ -7,11 +7,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {Col, Container, Row} from "react-bootstrap";
 import coverImg from "../public/cover-img.jpg"
 import Link from "next/link";
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import {useUser} from "@auth0/nextjs-auth0";
 import {useEffect} from "react";
 import axios from "axios";
 import {addUser} from "../redux/user"
+
 export default function Home() {
     const {address} = useSelector((state) => state.user)
     const {user, error, isLoading} = useUser();
@@ -24,47 +25,47 @@ export default function Home() {
             mode: 'no-cors',
             body: email
         }).then(async function (response) {
-                result = await response
-                console.log(result)
+            result = await response
+            console.log(result)
         })
 
     }
     useEffect(
-         a=> {
-             console.log("mounted")
-             let result
-             const getUser = async (email) => {
-                 const res = await axios.post('api/user', email, {
-                     headers: {
-                         // Overwrite Axios's automatically set Content-Type
-                         'Content-Type': 'application/json'
-                     }
-                 })
-                 const userData = res.data
-                 console.log(userData)
-                 dispatch(addUser(userData))
-                 return userData
+        a => {
+            console.log("mounted")
+            let result
+            const getUser = async (email) => {
+                const res = await axios.post('api/user', email, {
+                    headers: {
+                        // Overwrite Axios's automatically set Content-Type
+                        'Content-Type': 'application/json'
+                    }
+                })
+                const userData = res.data
+                console.log(userData)
+                dispatch(addUser(userData))
+                return userData
 
-             }
-             if (user) {
-                 //  router.push('/farms').then(r => console.log(r));
-                 const email = JSON.stringify({email: user.email})
-                 console.log(email);
-                 getUser(email).then(r => {
-                     console.log(r)
-                     if(r.message==="success"){
-                         console.log("move to next page")
-                         console.log(r)
-                         router.push('/farms');
-                     }else{
-                         router.push('/signup');
-                     }
-                 })
+            }
+            if (user) {
+                //  router.push('/farms').then(r => console.log(r));
+                const email = JSON.stringify({email: user.email})
+                console.log(email);
+                getUser(email).then(r => {
+                    console.log(r)
+                    if (r.message === "success") {
+                        console.log("move to next page")
+                        console.log(r)
+                        router.push('/farms');
+                    } else {
+                        router.push('/signup');
+                    }
+                })
 
-             }
+            }
 
 
-         },
+        },
     )
     const sectionStyle = {
         backgroundImage: `url("https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80")`,
@@ -90,9 +91,9 @@ export default function Home() {
             </Head>
             <header className={styles.landingImage}>
 
-                <NavBar  showMid={false} address={address}/>
+                <NavBar showMid={false} address={address}/>
                 <Container className={" justify-content-center align-items-center text-center"}>
-                    <Row  className={" justify-content-center align-items-center"}>
+                    <Row className={" justify-content-center align-items-center"}>
                         <Col className={"d-flex flex-column justify-content-center align-items-center"}>
                             <p className={"fs-1"}>Your Favourites</p>
                             <input placeholder={"Put in location"}/>
@@ -102,8 +103,8 @@ export default function Home() {
                 </Container>
             </header>
 
-            <main >
-                <Container style={{marginTop:"1rem"}} className={"justify-content-center "}>
+            <main>
+                <Container style={{marginTop: "1rem"}} className={"justify-content-center "}>
                     <Row sm={2} className={"align-items-center"}>
                         <Col lg={5}>
                             <Image
@@ -142,7 +143,7 @@ export default function Home() {
                     </Row>
                 </Container>
                 <Container style={{marginTop: "5rem"}}>
-                    <Row className={"justify-content-between"}  md={3} lg={1}>
+                    <Row className={"justify-content-between"} md={3} lg={1}>
                         <Col md={1} lg={3}>
                             <div className={"d-flex flex-column justify-content-center align-items-center text-center"}>
                                 <Image
@@ -189,15 +190,15 @@ export default function Home() {
                     </Row>
                 </Container>
                 <Container style={{marginTop: "5rem"}}>
-                    <Row xs={1} lg={2}  className={"justify-content-center align-items-center"}>
-                        <Col xs={{order:2}} lg={{order:1}}>
+                    <Row xs={1} lg={2} className={"justify-content-center align-items-center"}>
+                        <Col xs={{order: 2}} lg={{order: 1}}>
                             <div className={"d-flex flex-column justify-content-between"}>
                                 <h1>Careers</h1>
                                 <p style={{textAlign: "justify", textJustify: "inter-word"}}>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in metus quis nunc
                                     accumsan feugiat. Fusce quis tellus ultricies, suscipit urna vitae, imperdiet odio.
                                 </p>
-                                <ul style={{listStyle:"none"}}>
+                                <ul style={{listStyle: "none"}}>
                                     <li>
                                         <Link href={"/"}>Business Analysts</Link>
                                     </li>
@@ -225,7 +226,7 @@ export default function Home() {
                             </div>
 
                         </Col>
-                        <Col xs = {{order: 1}} lg={{order:2}}>
+                        <Col xs={{order: 1}} lg={{order: 2}}>
                             <Image
                                 src={"https://images.unsplash.com/photo-1637684666772-1f215bfd0f5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80"}
                                 height={600} width={400} objectFit={"cover"}
