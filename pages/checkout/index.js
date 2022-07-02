@@ -6,20 +6,20 @@ import CustomerDetails from "../../components/CustomerDetails";
 import ShoppingCart from "../../components/ShoppingCart";
 import {useUser} from "@auth0/nextjs-auth0";
 
-import axios from "axios";
-import {addUser} from "../../redux/user";
-import {router} from "next/client";
-import {useEffect} from "react";
 
+import {useEffect, useState} from "react";
+import {useRouter} from 'next/router'
 
 export default function CheckoutPage() {
     const {user, error, isLoading} = useUser();
-    console.log(user)
+    const router = useRouter()
+    const [name,setName] = useState("")
     useEffect(
-
         ()=>{
             if(!user){
-                router.push('/');
+                router.push('/')
+            }else {
+                setName(user.name)
             }
         },[]
     )
@@ -35,7 +35,7 @@ export default function CheckoutPage() {
                     <Row>
                         <Col>
                             <Col className={"mb-3"}>
-                                <CustomerDetails name={user.name}/>
+                                <CustomerDetails name={name}/>
                             </Col>
                         </Col>
 
