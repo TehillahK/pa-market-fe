@@ -40,6 +40,10 @@ const RegisterUser = (props) => {
         const res = await fetch("https://hammerhead-app-an67q.ondigitalocean.app/api/users", {
             method: "POST",
             mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
             body: JSON.stringify({
                 email:email,
                 streetName: inputs.streetName,
@@ -76,6 +80,7 @@ const RegisterUser = (props) => {
                         maxLength={4}
                         pattern="[0-9]*"
                         onChange={handleChange}
+                        name={"houseNum"}
                     />
                 </label>
             </div>
@@ -87,6 +92,7 @@ const RegisterUser = (props) => {
                         style={textStyle}
                         placeholder={"Kwacha Street"}
                         onChange={handleChange}
+                        name={"streetName"}
                     />
                 </label>
             </div>
@@ -98,6 +104,7 @@ const RegisterUser = (props) => {
                         style={textStyle}
                         placeholder={"Nchanga South"}
                         onChange={handleChange}
+                        name={"area"}
                     />
                 </label>
             </div>
@@ -109,6 +116,7 @@ const RegisterUser = (props) => {
                         style={textStyle}
                         placeholder={"Chingola"}
                         onChange={handleChange}
+                        name={"city"}
                     />
                 </label>
             </div>
@@ -120,6 +128,7 @@ const RegisterUser = (props) => {
                         style={textStyle}
                         placeholder={"Chingola"}
                         onChange={handleChange}
+                        name={"province"}
                     />
                 </label>
             </div>
