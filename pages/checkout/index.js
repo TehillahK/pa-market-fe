@@ -11,6 +11,17 @@ import {useEffect, useState} from "react";
 import {useRouter} from 'next/router'
 
 export default function CheckoutPage() {
+    const {user, error, isLoading} = useUser();
+    const router = useRouter()
+    useEffect(
+        ()=>{
+            setTimeout( ()=>{
+                if(!user){
+                    router.push("/")
+                }
+            },3000)
+        },[user]
+    )
     return (
         <>
             <Head>
@@ -19,20 +30,24 @@ export default function CheckoutPage() {
             <NavBar showMid={false}/>
             <main>
                 <Container >
-
-                    <Row>
-                        <Col>
-                            <Col className={"mb-3"}>
-                                <CustomerDetails />
+                    {user&&
+                        <Row>
+                            <Col>
+                                <Col className={"mb-3"}>
+                                    <CustomerDetails/>
+                                </Col>
                             </Col>
-                        </Col>
 
-                        <Col>
-                            <div className={"d-flex flex-row justify-content-end"}>
-                                <Checkout  />
-                            </div>
-                        </Col>
-                    </Row>
+                            <Col>
+                                <div className={"d-flex flex-row justify-content-end"}>
+                                    <Checkout/>
+                                </div>
+                            </Col>
+                        </Row>
+                    }
+                    {
+                        !user &&<div>You need to sign in</div>
+                    }
                 </Container>
             </main>
         </>
