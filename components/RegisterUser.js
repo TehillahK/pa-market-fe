@@ -2,6 +2,7 @@ import {useState} from "react";
 
 import {useRouter} from 'next/router'
 const RegisterUser = (props) => {
+
     const router = useRouter()
     const [inputs, setInputs] = useState({
         phoneNum: "",
@@ -89,6 +90,7 @@ const RegisterUser = (props) => {
                         pattern="[0-9]*"
                         onChange={handleChange}
                         name={"houseNum"}
+                        required
                     />
                 </label>
             </div>
@@ -101,6 +103,7 @@ const RegisterUser = (props) => {
                         placeholder={"Kwacha Street"}
                         onChange={handleChange}
                         name={"streetName"}
+                        required
                     />
                 </label>
             </div>
@@ -113,6 +116,7 @@ const RegisterUser = (props) => {
                         placeholder={"Nchanga South"}
                         onChange={handleChange}
                         name={"area"}
+                        required
                     />
                 </label>
             </div>
@@ -125,6 +129,7 @@ const RegisterUser = (props) => {
                         placeholder={"Chingola"}
                         onChange={handleChange}
                         name={"city"}
+                        required
                     />
                 </label>
             </div>
@@ -137,6 +142,7 @@ const RegisterUser = (props) => {
                         placeholder={"Chingola"}
                         onChange={handleChange}
                         name={"province"}
+                        required
                     />
                 </label>
             </div>
@@ -149,6 +155,7 @@ const RegisterUser = (props) => {
                     }
                     style={{backgroundColor: "black", color: "white", width: "100%"}} type="submit"
                    value={"Add address"}
+                    required
             />
         </form>
     )

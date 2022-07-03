@@ -11,10 +11,6 @@ import {useEffect, useState} from "react";
 import {useRouter} from 'next/router'
 
 export default function CheckoutPage() {
-    const {user, error, isLoading} = useUser();
-
-
-
     return (
         <>
             <Head>
