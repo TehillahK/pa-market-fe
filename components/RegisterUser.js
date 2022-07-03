@@ -63,7 +63,7 @@ const RegisterUser = (props) => {
             console.log(result)
         })
        // const res = await axios.post('https://hammerhead-app-an67q.ondigitalocean.app/api/users', formData);
-       router.push("/")
+
     }
 
     const handleChange = (event) => {
@@ -80,10 +80,11 @@ const RegisterUser = (props) => {
                 <label>
                     House Number
                     <input
+                        type="tel"
                         value={inputs.houseNum}
                         style={textStyle}
                         placeholder={"89"}
-                        type={"text"}
+
                         maxLength={4}
                         pattern="[0-9]*"
                         onChange={handleChange}
@@ -143,6 +144,9 @@ const RegisterUser = (props) => {
 
             <input
                     className={"mb-3"}
+                    onClick={
+                        ()=>router.push("/")
+                    }
                     style={{backgroundColor: "black", color: "white", width: "100%"}} type="submit"
                    value={"Add address"}
             />
