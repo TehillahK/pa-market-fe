@@ -27,12 +27,12 @@ export async function getServerSideProps() {
 
 
 export default function Farms({ufarms}) {
-    const {user, error, isLoading} = useUser();
 
 
     // Getting stuff from redux
     const [searchTxt, setSearchTxt] = useState("")
-    const {address} = useSelector((state) => state.user);
+    const [address ,setAddress] = useState("")
+    const {user} = useSelector((state) => state.user);
     const dispatch = useDispatch()
     dispatch(addFarms(ufarms))
     const {farms} = useSelector((state) => state.farms);
@@ -50,6 +50,13 @@ export default function Farms({ufarms}) {
             }
         )
     }
+
+    useEffect(
+        ()=>{
+            const addressInput= user.address.houseNum + " " +user.address.streetName
+            setAddress(addressInput)
+        },[user]
+    )
     return (
         <div>
             <Head>
