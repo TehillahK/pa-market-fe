@@ -56,7 +56,7 @@ const ShoppingCartMobile = () => {
                     <Modal.Title>Cart</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <ShoppingCart showFooter={true} />
+                    <ShoppingCart />
                 </Modal.Body>
             </Modal>
         </>
