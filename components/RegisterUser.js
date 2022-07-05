@@ -57,20 +57,32 @@ const RegisterUser = (props) => {
         }
         console.log(formData)
         submitBtn(true)
-        const res = await fetch("https://hammerhead-app-an67q.ondigitalocean.app/api/users", {
-            method: "POST",
-            mode: 'no-cors',
+        const res = await fetch("api/user", {
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json'
             },
+            method: "POST",
             body: JSON.stringify(formData),
-        }).then(async function (response) {
-            const result = await response
-            console.log(result)
-            router.push("/")
-        })
+        }).then(
+            //async function (response) {
+           // const result = await response.json()
+          //  console.log(result)
+          //  if (result.message === "user updated")
+         //   {
+          //      router.push("/")
+          //  }
+        //}
+           // response => console.log(response.body)
+            async function (response) {
+                const result = await response.json()
+                if(result.message ==="user updated"){
+                    router.push("/")
+                }else{
+                    console.log("failed")
+                }
+            }
+        )
+            .then(data => console.log(data))
        // const res = await axios.post('https://hammerhead-app-an67q.ondigitalocean.app/api/users', formData);
 
     }
