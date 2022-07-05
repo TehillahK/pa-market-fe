@@ -41,12 +41,16 @@ const RegisterUser = (props) => {
         event.preventDefault();
         const formData = {
             email:email,
-            houseNum:inputs.houseNum,
-            streetName: inputs.streetName,
-            area:inputs.area,
-            city: inputs.city,
-            province: inputs.province,
-            coordinates: [0,0],
+            address: [
+                {
+                    houseNum: inputs.houseNum,
+                    streetName: inputs.streetName,
+                    area: inputs.area,
+                    city: inputs.city,
+                    province: inputs.province,
+                    coordinates: [0, 0],
+                }
+            ]
 
         }
         console.log(formData)
@@ -62,6 +66,7 @@ const RegisterUser = (props) => {
         }).then(async function (response) {
             const result = await response
             console.log(result)
+            router.push("/")
         })
        // const res = await axios.post('https://hammerhead-app-an67q.ondigitalocean.app/api/users', formData);
 
@@ -150,9 +155,6 @@ const RegisterUser = (props) => {
 
             <input
                     className={"mb-3"}
-                    onClick={
-                        ()=>router.push("/")
-                    }
                     style={{backgroundColor: "black", color: "white", width: "100%"}} type="submit"
                    value={"Add address"}
                     required

@@ -56,11 +56,20 @@ export default function Home() {
                 getUser(email).then(r => {
                     result = r
                     if (r.message === "success") {
-                        console.log("move to next page")
-                        console.log(r)
-                        router.push('/farms')
-                    } else {
-                        router.push('/signup');
+                        console.log(r.address[0].houseNum)
+                        const houseNum = r.address[0].houseNum
+                        if(houseNum==="") {
+                            console.log("move to next page")
+                            console.log(r.address[0].houseNum === "")
+                            router.push('/signup');
+                        }
+                        else if(r.message==="could not find user in database"){
+                            router.push('/signup');
+                        }
+                        else {
+                            router.push('/farms');
+                        }
+
                     }
                 })
 
