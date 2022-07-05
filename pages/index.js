@@ -43,7 +43,7 @@ export default function Home() {
                 })
                 const userData = res.data
                 console.log(userData)
-                dispatch(addUser(userData))
+               // dispatch(addUser(userData))
 
                 return userData
 
@@ -60,16 +60,17 @@ export default function Home() {
                         const houseNum = r.address[0].houseNum
                         if(houseNum==="") {
                             console.log("move to next page")
+                            dispatch(addUser(r))
                             console.log(r.address[0].houseNum === "")
-                            router.push('/signup');
-                        }
-                        else if(r.message==="could not find user in database"){
                             router.push('/signup');
                         }
                         else {
                             router.push('/farms');
                         }
 
+                    }
+                    else if(r.message==="could not find user in database"){
+                        router.push('/signup');
                     }
                 })
 

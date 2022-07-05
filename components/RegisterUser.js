@@ -4,6 +4,8 @@ import {useRouter} from 'next/router'
 const RegisterUser = (props) => {
 
     const router = useRouter()
+    const submitBtn = props.submitBtn
+
     const [inputs, setInputs] = useState({
         phoneNum: "",
         houseNum: "",
@@ -54,6 +56,7 @@ const RegisterUser = (props) => {
 
         }
         console.log(formData)
+        submitBtn(true)
         const res = await fetch("https://hammerhead-app-an67q.ondigitalocean.app/api/users", {
             method: "POST",
             mode: 'no-cors',
@@ -155,6 +158,7 @@ const RegisterUser = (props) => {
 
             <input
                     className={"mb-3"}
+
                     style={{backgroundColor: "black", color: "white", width: "100%"}} type="submit"
                    value={"Add address"}
                     required

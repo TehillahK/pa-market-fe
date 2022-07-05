@@ -14,6 +14,7 @@ import {useMediaQuery} from "react-responsive";
 import RegisterUser from "../../components/RegisterUser";
 import {useUser} from "@auth0/nextjs-auth0";
 import {useRouter} from 'next/router'
+import SpinnerLoader from "../../components/SpinnerLoader";
 
 // Getting data from api ,dont forget to run the python api
 
@@ -22,7 +23,9 @@ export default function Signup() {
     // Getting stuff from redux
     const bg = "/sign-bg.jpg"
     const {user, error, isLoading} = useUser();
+    const [entered ,setEntered]= useState(false)
     const router = useRouter()
+
     useEffect(
         ()=>{
             setTimeout( ()=>{
@@ -59,8 +62,11 @@ export default function Signup() {
                     }} className={"d-flex flex-column  align-items-center mb-3 p-3"}>
                         <h1 className={"mb-3"}>Primary Address</h1>
                         <p>This is the address your goods will be dropped off</p>
+                        {entered&&<SpinnerLoader />}
 
-                        <RegisterUser email={user.email}/>
+                        {!entered &&  <RegisterUser email={user.email} submitBtn={
+                            (flag)=>setEntered(flag)
+                        }/>}
 
                     </div>
                     <span style={{marginBottom: "5rem"}}/>
