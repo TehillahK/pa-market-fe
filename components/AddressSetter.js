@@ -10,6 +10,7 @@ import {
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import AddNewAddress from "./AddNewAddress";
+import {useSelector} from "react-redux";
 
 function DropDownMenu(props) {
     const [addAddressClicked, setAddressClicked] = useState(false)
@@ -56,11 +57,16 @@ function DropDownMenu(props) {
 }
 
 const DropDown2 = () => {
+    const {user} = useSelector((state) => state.user)
+
+    const primaryAddress= `${user.address[0].houseNum} ${user.address[0].streetName}`
+    console.log(primaryAddress)
+  //  const userAddress = `${address}`
   return(
       <Dropdown as={NavItem} autoClose={"outside"}>
           <Dropdown.Toggle  style={{textDecoration:"none",color:"black"}} className={"fw-bold "} as={NavLink}>
 
-                Deliver to Address<br/>at time
+                Deliver to {primaryAddress}<br/>at time ASAP
 
           </Dropdown.Toggle>
           <Dropdown.Menu >
