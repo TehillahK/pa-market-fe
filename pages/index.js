@@ -65,6 +65,7 @@ export default function Home() {
                             router.push('/signup');
                         }
                         else {
+                            dispatch(addUser(r))
                             router.push('/farms');
                         }
 

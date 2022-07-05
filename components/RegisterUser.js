@@ -1,8 +1,10 @@
 import {useState} from "react";
 
 import {useRouter} from 'next/router'
+import {addUser} from "../redux/user";
+import {useDispatch} from "react-redux";
 const RegisterUser = (props) => {
-
+    const dispatch = useDispatch()
     const router = useRouter()
     const submitBtn = props.submitBtn
 
@@ -76,7 +78,8 @@ const RegisterUser = (props) => {
             async function (response) {
                 const result = await response.json()
                 if(result.message ==="user updated"){
-                    router.push("/")
+                    dispatch(addUser(formData))
+                    router.push("/farms")
                 }else{
                     console.log("failed")
                 }
