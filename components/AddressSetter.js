@@ -11,6 +11,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import AddNewAddress from "./AddNewAddress";
 import {useSelector} from "react-redux";
+import {useUser} from "@auth0/nextjs-auth0";
 
 function DropDownMenu(props) {
     const [addAddressClicked, setAddressClicked] = useState(false)
@@ -58,10 +59,7 @@ function DropDownMenu(props) {
 
 const DropDown2 = () => {
     const {user} = useSelector((state) => state.user)
-
     const primaryAddress= `${user.address[0].houseNum} ${user.address[0].streetName}`
-    console.log(primaryAddress)
-  //  const userAddress = `${address}`
   return(
       <Dropdown as={NavItem} autoClose={"outside"}>
           <Dropdown.Toggle  style={{textDecoration:"none",color:"black"}} className={"fw-bold "} as={NavLink}>
@@ -82,9 +80,11 @@ const AddressSetter = (props) => {
     const [addressClicked, setAddressClicked] = useState(false);
     const changeDropStatus = (status) => setAddressClicked(status);
     const newDropStatus = (status) => setNewAddressClicked(status)
-    return (
-        <>
-      {/*  <div style={{marginLeft:"0.5rem"}} className={"d-flex flex-column"}>
+    const {user, error, isLoading} = useUser();
+    if (user) {
+        return (
+            <>
+                {/*  <div style={{marginLeft:"0.5rem"}} className={"d-flex flex-column"}>
 
             <a
                 className={"d-flex flex-column  "}
@@ -114,9 +114,16 @@ const AddressSetter = (props) => {
                 }
             }
             />*/}
-            <DropDown2 />
-        </>
-    );
+                <DropDown2/>
+            </>
+        );
+    }else{
+        return (
+            <div>
+
+            </div>
+        )
+    }
 };
 
 export default AddressSetter;

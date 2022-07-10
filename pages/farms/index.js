@@ -13,6 +13,7 @@ import styles from "../../styles/Home.module.css";
 import {useMediaQuery} from "react-responsive";
 import CategoryList from "../../components/CategoryList";
 import {useUser} from "@auth0/nextjs-auth0";
+import {useRouter} from "next/router";
 
 // Getting data from api ,dont forget to run the python api
 export async function getServerSideProps() {
@@ -27,7 +28,7 @@ export async function getServerSideProps() {
 
 
 export default function Farms({ufarms}) {
-
+    const router = useRouter()
 
     // Getting stuff from redux
     const [searchTxt, setSearchTxt] = useState("")
@@ -53,8 +54,7 @@ export default function Farms({ufarms}) {
 
     useEffect(
         ()=>{
-            const addressInput= user.address.houseNum + " " +user.address.streetName
-            setAddress(addressInput)
+
         },[user]
     )
     return (
